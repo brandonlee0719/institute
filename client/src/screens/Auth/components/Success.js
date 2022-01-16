@@ -51,14 +51,6 @@ const Success = ({ user }) => {
           <Alert severity={errors.status || "error"}>{errors.message}</Alert>
         )}
         <p>Thank you for signing up. </p>
-        <p>
-          Please confirm your email address by clicking the link in the email just sent to you.
-        </p>
-        {/* <p>
-          <Button onClick={() => sendResendEmailRequest()} color="primary">
-            Resend confirmation email
-          </Button>
-        </p> */}
       </CardContent>
       <Dimmer isOpen={isLoading} />
     </Card>

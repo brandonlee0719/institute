@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 634.43 629.36" version="1.0">
+  <defs id="defs4">
+    <linearGradient id="linearGradient5111">
+      <stop id="stop5113" stop-color="#f2f2f2" offset="0"/>
+      <stop id="stop5115" stop-color="#f2f2f2" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient5117" x1="84.941" xlink:href="#linearGradient5111" gradientUnits="userSpaceOnUse" x2="305.98" y1="101.25" y2="426.46"/>
+    <filter id="filter7107">
+      <feGaussianBlur id="feGaussianBlur7109" stdDeviation="12.28222"/>
+    </filter>
+    <linearGradient id="linearGradient7113" x1="-20.277" xlink:href="#linearGradient5111" gradientUnits="userSpaceOnUse" x2="321.89" y1="-95.923" y2="496.73"/>
+  </defs>
+  <g id="layer1" transform="translate(-6.9018 -11.4)">
+    <path id="path6104" stroke-linejoin="round" d="m408.86 505.87l-5.08 41.26-39.64-12.52-15.18 38.71-35.29-21.99-24.33 33.71-28.7-30.07-31.95 26.61-20.33-36.27-37.56 17.82-10.67-40.18-40.81 7.92-0.35-41.57-41.498-2.48 10.009-40.35-39.583-12.72 19.731-36.6-35.177-22.16 28.212-30.54-28.559-30.22 34.92-22.56-20.148-36.37 39.435-13.17-10.471-40.24 41.469-2.95-0.13-41.57 40.9 7.45 10.21-40.3 37.76 17.39 19.91-36.5 32.25 26.24 28.37-30.4 24.71 33.44 35.03-22.39 15.62 38.53 39.5-12.98 5.55 41.2 41.48-2.74-4.87 41.29 40.87 7.66-14.99 38.78 37.68 17.58-24.17 33.83 32.12 26.4-31.81 26.76 24.55 33.56-37.48 18.01 15.43 38.6-40.77 8.13 5.34 41.23-41.51-2.27z" transform="matrix(1.2677 0 0 1.2677 -16.676 -105.9)" filter="url(#filter7107)" stroke="#000" stroke-linecap="round" stroke-width="7.8883"/>
+    <path id="path2182" stroke-linejoin="round" d="m408.86 505.87l-5.08 41.26-39.64-12.52-15.18 38.71-35.29-21.99-24.33 33.71-28.7-30.07-31.95 26.61-20.33-36.27-37.56 17.82-10.67-40.18-40.81 7.92-0.35-41.57-41.498-2.48 10.009-40.35-39.583-12.72 19.731-36.6-35.177-22.16 28.212-30.54-28.559-30.22 34.92-22.56-20.148-36.37 39.435-13.17-10.471-40.24 41.469-2.95-0.13-41.57 40.9 7.45 10.21-40.3 37.76 17.39 19.91-36.5 32.25 26.24 28.37-30.4 24.71 33.44 35.03-22.39 15.62 38.53 39.5-12.98 5.55 41.2 41.48-2.74-4.87 41.29 40.87 7.66-14.99 38.78 37.68 17.58-24.17 33.83 32.12 26.4-31.81 26.76 24.55 33.56-37.48 18.01 15.43 38.6-40.77 8.13 5.34 41.23-41.51-2.27z" transform="matrix(1.2677 0 0 1.2677 -28.797 -111.96)" stroke="#bfbfbf" stroke-linecap="round" stroke-width="7.8883" fill="#f60"/>
+    <path id="path3171" transform="matrix(1.1882 0 0 1.1882 -7.0493 -84.682)" fill="url(#linearGradient5117)" d="m408.86 505.87l-5.08 41.26-39.64-12.52-15.18 38.71-35.29-21.99-24.33 33.71-28.7-30.07-31.95 26.61-20.33-36.27-37.56 17.82-10.67-40.18-40.81 7.92-0.35-41.57-41.498-2.48 10.009-40.35-39.583-12.72 19.731-36.6-35.177-22.16 28.212-30.54-28.559-30.22 34.92-22.56-20.148-36.37 39.435-13.17-10.471-40.24 41.469-2.95-0.13-41.57 40.9 7.45 10.21-40.3 37.76 17.39 19.91-36.5 32.25 26.24 28.37-30.4 24.71 33.44 35.03-22.39 15.62 38.53 39.5-12.98 5.55 41.2 41.48-2.74-4.87 41.29 40.87 7.66-14.99 38.78 37.68 17.58-24.17 33.83 32.12 26.4-31.81 26.76 24.55 33.56-37.48 18.01 15.43 38.6-40.77 8.13 5.34 41.23-41.51-2.27z"/>
+    <path id="path6096" d="m408.86 505.87l-5.08 41.26-39.64-12.52-15.18 38.71-35.29-21.99-24.33 33.71-28.7-30.07-31.95 26.61-20.33-36.27-37.56 17.82-10.67-40.18-40.81 7.92-0.35-41.57-41.498-2.48 10.009-40.35-39.583-12.72 19.731-36.6-35.177-22.16 28.212-30.54-28.559-30.22 34.92-22.56-20.148-36.37 39.435-13.17-10.471-40.24 41.469-2.95-0.13-41.57 40.9 7.45 10.21-40.3 37.76 17.39 19.91-36.5 32.25 26.24 28.37-30.4 24.71 33.44 35.03-22.39 15.62 38.53 39.5-12.98 5.55 41.2 41.48-2.74-4.87 41.29 40.87 7.66-14.99 38.78 37.68 17.58-24.17 33.83 32.12 26.4-31.81 26.76 24.55 33.56-37.48 18.01 15.43 38.6-40.77 8.13 5.34 41.23-41.51-2.27z" fill="url(#linearGradient7113)" transform="matrix(1.1882 0 0 1.1882 -7.0493 -84.682)"/>
+    <flowRoot id="flowRoot2174" xml:space="preserve">
+      <flowRegion id="flowRegion2176">
+        <rect id="rect2178" y="338.08" width="571.43" height="297.14" x="102.86"/>
+      </flowRegion>
+      <flowPara id="flowPara2180"/>
+    </flowRoot>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Basic Starburst Badge</dc:title>
+        <dc:date>2007-04-03T16:38:01</dc:date>
+        <dc:description>A nice sort of badge you usually see toting "BETA" or some such message. (It's not rendering the drop-shadow quite right online, but it should work fine when you download it.)</dc:description>
+        <dc:source>http://openclipart.org/detail/3757/basic-starburst-badge-by-noonespillow</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>noonespillow</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>badge</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>sign</rdf:li>
+            <rdf:li>starburst</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>web 2</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

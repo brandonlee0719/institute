@@ -60,6 +60,8 @@ const Topbar = (props) => {
     className, onSidebarOpen, ...rest
   } = props;
 
+  const [results, setResults] = useState([]);
+
   const classes = useStyles();
 
   return (

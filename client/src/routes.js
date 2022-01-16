@@ -73,17 +73,59 @@ const routes = [
   },
   {
     exact: true,
+    guard: GuestGuard,
+    layout: MainLayout,
+    path: "/signup_client",
+    component: lazy(() => import("./screens/Auth/SignUp")),
+  },
+  {
+    exact: true,
     guard: ClientPortalGuard,
     layout: DashboardLayout,
-    path: "/dashboard",
+    path: "/home",
     component: lazy(() => import("./screens/Client/Home")),
   },
   {
     exact: true,
-    guard: GuestGuard,
+    guard: ClientPortalGuard,
+    layout: DashboardLayout,
+    path: "/account",
+    component: lazy(() => import("./screens/Client/Account")),
+  },
+  {
+    exact: true,
+    guard: ClientPortalGuard,
+    layout: DashboardLayout,
+    path: "/search",
+    component: lazy(() => import("./screens/Client/Search")),
+  },
+  {
+    exact: true,
+    guard: ClientPortalGuard,
+    layout: DashboardLayout,
+    path: "/consult",
+    component: lazy(() => import("./screens/Client/Consult")),
+  },
+  {
+    exact: true,
+    guard: ClientPortalGuard,
+    layout: DashboardLayout,
+    path: "/certificate",
+    component: lazy(() => import("./screens/Client/Certificate")),
+  },
+  {
+    exact: true,
+    guard: ClientPortalGuard,
     layout: DashboardLayout,
     path: "/contact",
-    component: lazy(() => import("./screens/Contact")),
+    component: lazy(() => import("./screens/Client/Contact")),
+  },
+  {
+    exact: true,
+    guard: ClientPortalGuard,
+    layout: DashboardLayout,
+    path: "/class/:pathParam",
+    component: lazy(() => import("./screens/Client/Class")),
   },
   {
     exact: true,
@@ -93,24 +135,11 @@ const routes = [
     component: lazy(() => import("./screens/ForgetPassword")),
   },
   {
-    exact: true,
-    guard: GuestGuard,
-    layout: MainLayout,
-    path: "/password/reset/:userId/:token",
-    component: lazy(() => import("./screens/ResetPassword")),
-  },
-  {
-    exact: true,
-    guard: GuestGuard,
-    layout: MainLayout,
-    path: "/signup_client",
-    component: lazy(() => import("./screens/Auth/SignUp")),
-  },
-  {
-    exact: true,
-    layout: MainLayout,
-    path: "/agreement",
-    component: lazy(() => import("./screens/Agreement")),
+    path: "/avonEHR",
+    component: () => {
+      window.location.href = 'www.avonehr.com';
+      return null;
+    }
   },
   {
     path: "*",

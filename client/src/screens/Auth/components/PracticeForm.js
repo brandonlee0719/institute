@@ -20,6 +20,8 @@ import AuthService from "../../../services/auth.service";
 
 import TextFieldWithError from "./TextFieldWithError";
 
+import CommonModal from "../../Modal";
+
 const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -57,6 +59,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
   const [dropDownVal, setDropDownVal] = useState("");
   const [termsAndConditions, setTermsAndConditions] = useState(false);
   const [fieldErrors, setFieldErrors] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
 
@@ -167,6 +170,14 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
     setDropDownVal(event.target.value);
   };
 
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const modalTitle = "Terms of Service";
+
+  const modalBody = "This is text for terms of service";
+
   return (
     <form className={classes.form} noValidate onSubmit={(event) => handleFormSubmission(event)}>
       {practiceErrors
@@ -177,6 +188,12 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
             {error.msg}
           </Alert>
         ))}
+
+      {
+        modalOpen ?
+          <CommonModal title={modalTitle} body={modalBody} isModalOpen={true} />
+          : null
+      }
 
       <TextField
         value={firstName}
@@ -209,7 +226,6 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
           }`}
       />
       <FormControl className={classes.formControl}>
-        {/* <InputLabel htmlFor="age-native-simple">License </InputLabel> */}
         <Select
           native
           value={dropDownVal}
@@ -272,10 +288,9 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         label={(
           <div>
             <span>
-              Check here to indicate that you have read and agree to the terms
-              of the
-              {" "}
-              <Link href="/agreement">Customer Agreement</Link>
+              Check here to indicate that you have read and agree to the  <a style={{ color: "#2979ff" }} onClick={handleModalOpen}>
+                Terms of Service
+              </a>
             </span>
           </div>
         )}

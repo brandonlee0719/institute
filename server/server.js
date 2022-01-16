@@ -30,10 +30,12 @@ app.use(baseAPIPath, require("./app/routes/config.routes"));
 app.use(baseAPIPath, require("./app/routes/index.routes"));
 app.use(baseAPIPath, require("./app/routes/login.routes"));
 app.use(baseAPIPath, require("./app/routes/signup.routes"));
+app.use(baseAPIPath, require("./app/routes/password-reset.routes"));
 app.use(baseAPIPath, require("./app/routes/accordian.routes"));
-
-
-
+app.use(baseAPIPath, require("./app/routes/account.routes"));
+app.use(baseAPIPath, require("./app/routes/email.routes"));
+app.use(baseAPIPath, require("./app/routes/search.routes"));
+app.use(baseAPIPath, require("./app/routes/class.routes"));
 
 
 app.listen(config.port).on("listening", () => {

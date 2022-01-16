@@ -11,21 +11,6 @@ router.get(
   [authJwt.verifyToken],
   IndexController.getUserContracts
 );
-router.get(
-  "/auth/client/functional-range",
-  [authJwt.verifyToken],
-  IndexController.getFunctionalRange
-);
-router.put(
-  "/auth/client/functional-range",
-  [authJwt.verifyToken, authorization.isReadOnly],
-  IndexController.updateFunctionalRange
-);
-router.get("/auth/patient", [authJwt.verifyToken], IndexController.getPatient);
-router.get(
-  "/auth/corporate-user",
-  [authJwt.verifyToken],
-  IndexController.getCorporateUser
-);
+
 
 module.exports = router;

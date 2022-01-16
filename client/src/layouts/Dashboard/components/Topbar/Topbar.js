@@ -14,15 +14,12 @@ import MenuIcon from "@material-ui/icons/MenuOutlined";
 import clsx from "clsx";
 
 import PropTypes from "prop-types";
-import { NavLink as RouterLink, useHistory } from "react-router-dom";
+import { Link, NavLink as RouterLink, useHistory } from "react-router-dom";
 
 import useAuth from "../../../../hooks/useAuth";
 import useDebounce from "../../../../hooks/useDebounce";
 import { client_pages } from "../../../../static/nav-pages";
 import * as API from "../../../../utils/API";
-// import { getAllowedRoutes } from "../../../../utils/helpers";
-
-import MenuWithDropDowns from "./components/MenuWithDropDowns";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -146,13 +143,11 @@ const Topbar = (props) => {
 
 
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [results, setResults] = useState([]);
+  const [nothingFound, setNothingFound] = useState(false);
 
 
   const navPages = client_pages;
-  // const allowedPages = getAllowedRoutes(navPages, (user && user.permissions) ? user.permissions : []); // We might use in future
-
-
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   useEffect(
@@ -177,10 +172,6 @@ const Topbar = (props) => {
         setNothingFound(false);
       }
     },
-    // This is the useEffect input array
-    // Our useEffect function will only execute if this value changes ...
-    // ... and thanks to our hook it will only change if the original ...
-    // value (searchTerm) hasn't changed for more than 500ms.
     [debouncedSearchTerm],
   );
   const handleLogout = async () => {
@@ -197,7 +188,7 @@ const Topbar = (props) => {
       <Toolbar variant="dense" className={classes.toolbar}>
         <div className={classes.headerWithNav}>
           <Typography className={classes.title} variant="h6" noWrap>
-            <RouterLink to={user.login_url || "/dashboard"} className={classes.titleAsLogo}>
+            <RouterLink to={user.login_url || "/home"} className={classes.titleAsLogo}>
               {process.env.REACT_APP_SITE_TITLE}
             </RouterLink>
           </Typography>
@@ -205,26 +196,30 @@ const Topbar = (props) => {
             <div className={classes.navs}>
               {
                 navPages.map((page) => (
-                  page.subMenus
-                    ? (
-                      <MenuWithDropDowns
-                        parentName={page.title}
-                        parentChildrenItems={page.subMenus}
-                        parentId={page.id}
-                        key={page.id}
-                      />
-                    )
-                    : (
-                      <Button key={page.id}>
-                        <RouterLink
-                          to={page.href}
-                          className={classes.link}
-                          onClick={page.logout && handleLogout}
-                        >
-                          {page.title}
-                        </RouterLink>
-                      </Button>
-                    )
+                  (
+
+                    <Button key={page.id}>
+                      {
+                        page.title === 'AvonEHR' ?
+
+                          <a
+                            target="_blank"
+                            className={classes.link}
+                            href="https://www.avonehr.com">
+                            {page.title}
+                          </a>
+                          :
+                          <RouterLink
+                            to={page.href}
+                            className={classes.link}
+                            onClick={page.logout && handleLogout}
+                          >
+                            {page.title}
+                          </RouterLink>
+                      }
+
+                    </Button>
+                  )
                 ))
               }
             </div>
@@ -232,49 +227,6 @@ const Topbar = (props) => {
         </div>
         <Hidden mdDown>
           <div className={classes.grow} />
-          {/* <div className={classes.headerWithSearchBar}>
-            <div className={classes.sectionDesktop}>
-              <Typography className={classes.name}>
-                {
-                  lastVisitedPatient && (
-                    <RouterLink to={`/patients/${lastVisitedPatient.id}`} className={classes.patientLink}>
-                      {`${lastVisitedPatient.firstname} ${lastVisitedPatient.lastname}`}
-                    </RouterLink>
-                  )
-                }
-              </Typography>
-              <Typography className={classes.date}>
-                {moment().format("ddd MMM D")}
-              </Typography>
-            </div>
-
-            <ClickAwayListener onClickAway={() => handleClose()}>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Search…"
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ "aria-label": "search" }}
-                />
-                {!!searchTerm && (
-                  <SearchResults
-                    open={open}
-                    handleClose={handleClose}
-                    results={results}
-                    noContent={
-                      nothingFound && results.length < 1 && "Nothing found!"
-                    }
-                  />
-                )}
-              </div>
-            </ClickAwayListener>
-          </div> */}
         </Hidden>
         <Hidden lgUp>
           <IconButton color="inherit" onClick={onSidebarOpen}>

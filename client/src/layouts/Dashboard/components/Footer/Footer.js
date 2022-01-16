@@ -53,12 +53,15 @@ export default function Footer() {
         <CustomTypography variant="body1" color="textPrimary" align="center">
           {"Copyright © "}
           {" "}
-          {new Date().getFullYear()}
-          {` ${process.env.REACT_APP_SITE_TITLE}`}
+          {/* {new Date().getFullYear()}
+           */}
+          {"2020"}
+          {" Clinios Institute"}
+          {/* {` ${process.env.REACT_APP_SITE_TITLE}`}
           {" "}
           - User
           {" "}
-          {`${user.firstname} ${user.lastname}`}
+          {`${user.firstname} ${user.lastname}`} */}
         </CustomTypography>
       </Box>
     </Container>

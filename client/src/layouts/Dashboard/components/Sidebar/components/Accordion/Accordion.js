@@ -35,13 +35,13 @@ const AccordionSideBar = () => {
     fetchAccordianMenu();
   }, []);
   return (
-    accordianMenuDetails.map((item) => (
+    accordianMenuDetails.map((item, index) => (
       <div className={classes.root}>
-        <Accordion>
+        <Accordion >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
+            id={'accordion' + index}
           >
             <Typography className={classes.heading}>{item.name}</Typography>
           </AccordionSummary>
@@ -54,66 +54,6 @@ const AccordionSideBar = () => {
         </Accordion>
       </div>
     ))
-    // <div className={classes.root}>
-    //     {/* {
-    //         accordianMenuDetails.map(item => {
-    //             <Accordion>
-    //                 <AccordionSummary
-    //                     expandIcon={<ExpandMoreIcon />}
-    //                     aria-controls="panel1a-content"
-    //                     id="panel1a-header"
-    //                 >
-    //                     <Typography className={classes.heading}>{item.name}</Typography>
-    //                 </AccordionSummary>
-    //                 <AccordionDetails>
-    //                     <Typography>
-    //                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-    //                         sit amet blandit leo lobortis eget.
-    //                     </Typography>
-    //                 </AccordionDetails>
-    //             </Accordion>
-    //         })
-    //     } */}
-    //     <Accordion>
-    //         <AccordionSummary
-    //             expandIcon={<ExpandMoreIcon />}
-    //             aria-controls="panel1a-content"
-    //             id="panel1a-header"
-    //         >
-    //             <Typography className={classes.heading}>Accordion 1</Typography>
-    //         </AccordionSummary>
-    //         <AccordionDetails>
-    //             <Typography>
-    //                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-    //                 sit amet blandit leo lobortis eget.
-    //             </Typography>
-    //         </AccordionDetails>
-    //     </Accordion>
-    //     <Accordion>
-    //         <AccordionSummary
-    //             expandIcon={<ExpandMoreIcon />}
-    //             aria-controls="panel2a-content"
-    //             id="panel2a-header"
-    //         >
-    //             <Typography className={classes.heading}>Accordion 2</Typography>
-    //         </AccordionSummary>
-    //         <AccordionDetails>
-    //             <Typography>
-    //                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-    //                 sit amet blandit leo lobortis eget.
-    //             </Typography>
-    //         </AccordionDetails>
-    //     </Accordion>
-    //     <Accordion disabled>
-    //         <AccordionSummary
-    //             expandIcon={<ExpandMoreIcon />}
-    //             aria-controls="panel3a-content"
-    //             id="panel3a-header"
-    //         >
-    //             <Typography className={classes.heading}>Disabled Accordion</Typography>
-    //         </AccordionSummary>
-    //     </Accordion>
-    // </div>
   );
 };
 

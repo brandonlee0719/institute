@@ -12,6 +12,7 @@ import Logo from "../../assets/img/Logo.svg";
 import AuthService from "../../services/auth.service";
 import PracticeForm from "./components/PracticeForm";
 import Success from "./components/Success";
+import useAuth from "../../hooks/useAuth";
 
 const useStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -46,15 +47,16 @@ const SignUp = () => {
   const [signedUpUser, setSignedUpUser] = useState([]);
   const [errors, setErrors] = useState([]);
   const [success, setSuccess] = useState(false);
+  const { user, login } = useAuth();
 
 
   const handleFormSubmit = (data) => {
     AuthService.register(data).then(
-      (response) => {
+      async (response) => {
         if (response.data) {
-          setSuccess(true);
-          // sendVerificationEmail(response.data.data.user);
-          setSignedUpUser(response.data.data.user);
+          const userData = response.data.data.user;
+          setSignedUpUser(userData);
+          await login(data.user.email.trim(), data.user.password.trim());
         }
         enqueueSnackbar(`${response.data.message}`, {
           variant: "success",

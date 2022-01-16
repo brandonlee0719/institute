@@ -13,6 +13,7 @@ import Help from "../../../assets/img/Help.png";
 import useAuth from "../../../hooks/useAuth";
 import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 
+
 // components
 
 
@@ -43,10 +44,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function Home() {
   const classes = useStyles();
 
   const [selectedProvider, setSelectedProvider] = useState({});
+
+
 
 
   return (
@@ -58,37 +63,28 @@ export default function Home() {
             {" "}
             {!isEmpty(selectedProvider) && `- ${selectedProvider?.name}`}
           </Typography>
-
-          {/* <FormControl component="div" className={classes.formControl}>
-            <p className={classes.formHelperText}>Show Declined</p>
-            <Switch
-              checked={isCancelEventsVisible}
-              size="small"
-              name="active"
-              color="primary"
-              inputProps={{ "aria-label": "primary checkbox" }}
-              onChange={handleEventsType}
-            />
-          </FormControl> */}
-
         </Grid>
       </Grid>
 
       <Grid container spacing={6}>
-        <Grid item md={8} xs={12}>
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=KoIBI2rbdHA"
-          />
+        <Grid item md={9} xs={9}>
+          <Grid container spacing={2}>
+            <Grid item md={5} xs={5} >
+              <ReactPlayer
+                url="https://www.youtube.com/watch?v=KoIBI2rbdHA"
+              />
+            </Grid>
+          </Grid>
+
         </Grid>
-        <Grid item md={4} xs={12}>
+
+        <Grid item md={3} xs={3}>
           <Grid item md={6} xs={12}>
             <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
           </Grid>
           <Grid item md={6} xs={12}>
             <img src={Help} alt="Help ad" className={classes.Logo} />
           </Grid>
-
-
         </Grid>
       </Grid>
 
@@ -100,9 +96,7 @@ export default function Home() {
           <h3>To give us feedback on our program, click Contact on the upper right.</h3>
           <h3>To learn more about AvonEHR software, visit www.AvonEHR.com</h3>
         </Grid>
-        {/* <Grid item md={6} xs={12}>
-          <img src={Help} alt="Help ad" className={classes.Logo} />
-        </Grid> */}
+
       </Grid>
 
     </div>

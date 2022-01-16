@@ -105,67 +105,50 @@ const sendRecoveryEmail = async (user, res) => {
  * @returns {object} response
  */
 exports.sendPasswordResetEmail = async (req, res) => {
-  // Check for validation errors
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    errorMessage.status = "invalidFields";
-    errorMessage.message = errors.array();
-    return res.status(status.bad).send(errorMessage);
-  }
 
-  // Check where user already signed up or not
   const { email } = req.params;
-  const userQueryResponse = await db.query(
-    "SELECT id, client_id, firstname, lastname, email, password, sign_dt, email_confirm_dt, created FROM users WHERE email = $1 LIMIT 1",
-    [email]
-  );
-  if (userQueryResponse.rows.length < 1) {
-    errorMessage.message =
-      "We couldn't find any record with that email address.";
-    return res.status(status.notfound).send(errorMessage);
-  }
 
-  const user = userQueryResponse.rows[0];
-  if (!user) {
-    errorMessage.message = "User not found";
-    errorMessage.user = user;
-    return res.status(status.notfound).send(errorMessage);
-  }
-  const clientQueryResponse = await db.query("SELECT id, name FROM client WHERE id = $1", [user.client_id]);
+  const pgClient = await db.getClient();
+  await pgClient.query('BEGIN')
 
-  if (!user.sign_dt) {
-    errorMessage.message =
-      "The password for this additional user can not be reset until user registration has first been completed.";
-    delete user.password; // delete password from response
-    user.client = clientQueryResponse.rows[0];
-    errorMessage.user = user;
-    return res.status(status.unauthorized).send(errorMessage);
-  }
+  try {
+    const userQueryResponse = await pgClient.query(`SELECT * from client WHERE email='${email}'`);
 
-  if (!user.email_confirm_dt) {
-    errorMessage.message =
-      "Login can not be done until the email address is confirmed. Please see the request in your email inbox.";
-    delete user.password; // delete password from response
-    errorMessage.user = user;
-    return res.status(status.unauthorized).send(errorMessage);
-  }
 
-  if (user) {
-    const token = usePasswordHashToMakeToken(user);
-    const token_expires = moment()
-      .add(1, "hours")
-      .format("YYYY-MM-DD HH:mm:ss"); // 1 hour
-
-    // update user table for password reset token and expires time
-    const userUpdateResponse = await db.query(
-      `UPDATE users SET reset_password_token='${token}', reset_password_expires='${token_expires}', updated= now() WHERE id =${user.id}`
-    );
-  
-    if (userUpdateResponse.rowCount) {
-      sendRecoveryEmail(user, res);
+    if (userQueryResponse.rows.length < 1) {
+      errorMessage.message =
+        "We couldn't find any record with that email address.";
+      res.status(status.notfound).send(errorMessage);
     }
+
+    const user = userQueryResponse.rows[0];
+    if (!user) {
+      errorMessage.message = "User not found";
+      errorMessage.user = user;
+      res.status(status.notfound).send(errorMessage);
+    }
+
+
+    if (user) {
+      const token = usePasswordHashToMakeToken(user);
+      const token_expires = moment()
+        .add(1, "hours")
+        .format("YYYY-MM-DD HH:mm:ss"); // 1 hour
+
+      // update user table for password reset token and expires time
+      const userUpdateResponse = await db.query(
+        `UPDATE client SET reset_password_token='${token}', reset_password_expires='${token_expires}' WHERE id =${user.id}`
+      );
+
+      if (userUpdateResponse.rowCount) {
+        sendRecoveryEmail(user, res);
+      }
+    }
+  } catch (error) {
+    console.log("Error>>", error);
   }
-};
+
+}
 
 /**
  * Calling this function with correct url will let user to reset password
