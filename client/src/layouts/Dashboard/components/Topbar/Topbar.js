@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/MenuOutlined";
@@ -19,11 +19,19 @@ import { Link, NavLink as RouterLink, useHistory } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import useDebounce from "../../../../hooks/useDebounce";
 import { client_pages } from "../../../../static/nav-pages";
+import Logo from "../../../../assets/img/Logo.svg";
 import * as API from "../../../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     boxShadow: "none",
+    backgroundColor: '#ffffff',
+  },
+  Logo: {
+    maxWidth: "180px",
+    width: 170,
+    height: 65,
+    objectFit: "contain",
   },
   flexGrow: {
     flexGrow: 1,
@@ -39,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: "none",
-    color: "#fff",
+    color: "#AEAEAE",
     letterSpacing: "0.1em",
     fontWeight: 700,
     fontSize: "18px",
@@ -48,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
     "& a": {
-      color: theme.palette.white,
+      color: "#AEAEAE",
       textDecoration: "none",
     },
   },
@@ -56,21 +64,21 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
   },
   link: {
-    color: "#ffffff",
+    color: "#AEAEAE",
     padding: "10px 10px",
     textDecoration: "none",
   },
   patientLink: {
-    color: "#ffffff",
+    color: "#AEAEAE",
     padding: "10px 10px",
     textDecoration: "none",
   },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: theme.palette.common.white,
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: theme.palette.common.white,
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -189,7 +197,7 @@ const Topbar = (props) => {
         <div className={classes.headerWithNav}>
           <Typography className={classes.title} variant="h6" noWrap>
             <RouterLink to={user.login_url || "/home"} className={classes.titleAsLogo}>
-              {process.env.REACT_APP_SITE_TITLE}
+              <img src={Logo} alt="Logo" className={classes.Logo} />
             </RouterLink>
           </Typography>
           <Hidden mdDown>

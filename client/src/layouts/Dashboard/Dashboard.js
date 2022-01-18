@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flex: 1,
-    width: `calc(100% - 240px)`,
-    marginLeft: "240px",
+    width: `calc(100% - 300px)`,
+    marginLeft: "300px",
   },
 }));
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import InputBase from "@material-ui/core/InputBase";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/SearchOutlined";
 
 const useStyles = makeStyles((theme) => ({
@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
     borderColor: theme.palette.divider,
     borderWidth: "1px",
     borderStyle: "solid",
-    backgroundColor: fade(theme.palette.divider, 0.15),
+    backgroundColor: theme.palette.divider,
     "&:hover": {
-      backgroundColor: fade(theme.palette.divider, 0.25),
+      backgroundColor: theme.palette.divider,
     },
     marginRight: theme.spacing(1),
     marginLeft: 0,

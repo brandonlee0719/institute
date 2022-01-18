@@ -28,6 +28,7 @@ import parse from 'html-react-parser';
 const useStyles = makeStyles((theme) => ({
     pageTitle: {
         marginBottom: theme.spacing(2),
+        color: "#808080"
     },
     root: {
         flexGrow: 1,

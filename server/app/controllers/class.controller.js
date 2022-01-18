@@ -10,7 +10,7 @@ const getClass = async (req, res) => {
 
 
         const classResponse = await pgClient.query(`SELECT c.title, c.url, c.type, c.length, c.module_id, c.highlight, cc.completion_dt FROM class c left join client_class cc on cc.class_id = c.id
-        WHERE c.id = '${req.params.id}' and status = 'A'`);
+        WHERE c.id = $1 and status = 'A'`);
 
 
         if (!classResponse.rowCount) {

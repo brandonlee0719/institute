@@ -8,11 +8,10 @@ import useAuth from "../../../../hooks/useAuth";
 const useStyles = makeStyles((theme) => ({
   footer: {
     flex: 0,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#ffffff',
     color: "#ffffff",
     clear: "both",
     position: "relative",
-    borderTop: `1px solid ${theme.palette.divider}`,
     marginTop: theme.spacing(1),
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
@@ -25,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
   },
   footerText: {
     // marginLeft: "240px",
-    color: "#ffffff",
+    color: "#AEAEAE",
     marginTop: 0,
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     "& p": {
-      color: "#ffffff",
+      color: "#AEAEAE",
     },
     fontSize: "11px !important",
   },

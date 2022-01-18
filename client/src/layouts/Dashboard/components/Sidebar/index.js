@@ -13,7 +13,7 @@ import AccordionSideBar from "./components/Accordion/Accordion";
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
-    width: 240,
+    width: 300,
     [theme.breakpoints.up("lg")]: {
       marginTop: 64,
       height: "calc(100% - 64px)",

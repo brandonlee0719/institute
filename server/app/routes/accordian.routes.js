@@ -1,6 +1,6 @@
 const express = require("express");
 const { authJwt } = require("../middlewares");
-const controller = require("../controllers/accordian.controller");
+const accordionFunction = require("../controllers/accordian.controller");
 
 const router = express.Router();
 
@@ -8,7 +8,13 @@ const router = express.Router();
 router.get(
     "/accordian",
     [authJwt.verifyToken],
-    controller.getAccordianMenu
+    accordionFunction.getAccordianMenu
+);
+
+router.get(
+    "/classAccordionData/:id",
+    [authJwt.verifyToken],
+    accordionFunction.getClassData
 );
 
 module.exports = router;

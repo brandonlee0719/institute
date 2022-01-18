@@ -25,6 +25,7 @@ import Success from "./Success";
 const useStyles = makeStyles((theme) => ({
     pageTitle: {
         marginBottom: theme.spacing(2),
+        color: "#808080"
     },
     root: {
         flexGrow: 1,

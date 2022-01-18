@@ -20,6 +20,12 @@ import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 const useStyles = makeStyles((theme) => ({
   pageTitle: {
     marginBottom: theme.spacing(2),
+    color: "#808080"
+  },
+  pageDescription: {
+    marginTop: theme.spacing(2),
+    color: "#808080",
+    fontWeight: '200'
   },
   root: {
     flexGrow: 1,
@@ -51,14 +57,11 @@ export default function Home() {
 
   const [selectedProvider, setSelectedProvider] = useState({});
 
-
-
-
   return (
     <div className={classes.root}>
-      <Grid container spacing={4}>
-        <Grid item md={7} xs={12} className={classes.headerWrap}>
-          <Typography component="h1" variant="h2" color="textPrimary" className={classes.pageTitle}>
+      <Grid container >
+        <Grid item md={7} xs={7} className={classes.headerWrap}>
+          <Typography component="h1" variant="h3" className={classes.pageTitle}>
             Home
             {" "}
             {!isEmpty(selectedProvider) && `- ${selectedProvider?.name}`}
@@ -66,8 +69,9 @@ export default function Home() {
         </Grid>
       </Grid>
 
-      <Grid container spacing={6}>
+      <Grid container spacing={1}>
         <Grid item md={9} xs={9}>
+
           <Grid container spacing={2}>
             <Grid item md={5} xs={5} >
               <ReactPlayer
@@ -76,6 +80,26 @@ export default function Home() {
             </Grid>
           </Grid>
 
+          <Grid container spacing={2}>
+            <Grid item md={12} xs={12}>
+              <Typography component="h1" variant="h3" className={classes.pageDescription}>
+                Welcome to the Avon Institute functional medicine training program.
+              </Typography>
+              <Typography component="h1" variant="h3" className={classes.pageDescription}>
+                To start learning, click on the menu links on the left.
+              </Typography>
+              <Typography component="h1" variant="h3" className={classes.pageDescription}>
+                To change your email or password, click Account on the upper right.
+              </Typography>
+              <Typography component="h1" variant="h3" className={classes.pageDescription}>
+                To give us feedback on our program, click Contact on the upper right.
+              </Typography>
+              <Typography component="h1" variant="h3" className={classes.pageDescription}>
+                To learn more about AvonEHR software, visit www.AvonEHR.com.
+              </Typography>
+            </Grid>
+
+          </Grid>
         </Grid>
 
         <Grid item md={3} xs={3}>
@@ -85,16 +109,6 @@ export default function Home() {
           <Grid item md={6} xs={12}>
             <img src={Help} alt="Help ad" className={classes.Logo} />
           </Grid>
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={6}>
-        <Grid item md={6} xs={12}>
-          <h3>Welcome to the Avon Institute functional medicine training program.  </h3>
-          <h3>To start learning, click on the menu links on the left.</h3>
-          <h3>To change your email or password, click Account on the upper right.</h3>
-          <h3>To give us feedback on our program, click Contact on the upper right.</h3>
-          <h3>To learn more about AvonEHR software, visit www.AvonEHR.com</h3>
         </Grid>
 
       </Grid>

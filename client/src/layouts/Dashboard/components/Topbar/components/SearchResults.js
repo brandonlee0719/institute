@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   CardContent: {
     padding: 0,
-    backgroundColor: theme.palette.white,
+    backgroundColor: '#ffffff',
     textAlign: "center",
   },
   paper: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   list: {
     width: "100%",
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#ffffff',
   },
   listItem: {
     cursor: "pointer",
@@ -91,7 +91,7 @@ const SearchResults = ({ results, noContent, handleClose }) => {
 SearchResults.defaultProps = {
   results: null,
   noContent: null,
-  handleClose: () => {},
+  handleClose: () => { },
 };
 
 SearchResults.propTypes = {

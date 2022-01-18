@@ -10,7 +10,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   itemWithSubmenus: {
-    color: theme.palette.white,
+    color: '#AEAEAE',
     padding: "16px 15px",
     textDecoration: "none",
   },
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "1px solid #E9EBEE",
     paddingTop: "13px !important",
     paddingBottom: "13px !important",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#ffffff',
   },
 }));
 

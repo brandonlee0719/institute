@@ -8,7 +8,7 @@ const getAccountUser = async (req, res) => {
 
     try {
 
-        const accountUserResponse = await pgClient.query(`SELECT firstname, lastname, email, license FROM client WHERE id = '${req.params.id}'`);
+        const accountUserResponse = await pgClient.query(`SELECT firstname, lastname, email, license FROM client WHERE id = $1 `);
 
 
         if (!accountUserResponse.rowCount) {
@@ -71,8 +71,8 @@ const deleteAccountUser = async (req, res) => {
     await pgClient.query('BEGIN')
 
     try {
-        await pgClient.query(`DELETE FROM client_class WHERE client_id = '${req.params.id}'`);
-        await pgClient.query(`DELETE FROM client WHERE id = '${req.params.id}'`);
+        await pgClient.query(`DELETE FROM client_class WHERE client_id = $1`);
+        await pgClient.query(`DELETE FROM client WHERE id = $1 `);
 
         const successMessage = "User Deleted Successfully";
 
