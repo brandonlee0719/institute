@@ -13,6 +13,12 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(2),
         color: "#808080"
     },
+    pageDescription: {
+        marginTop: theme.spacing(2),
+        color: "#808080",
+        fontWeight: '200',
+        fontSize: 'large'
+    },
     root: {
         flexGrow: 1,
         padding: "40px 0px",
@@ -37,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const certificateTxt = `When you have completed most of the classes, and understand the material, then you may
-display your completion certificate on your website by using the following code:`;
+const certificateTxt = `When you have completed most of the classes, and understand the material, then you may display your completion certificate on your website by using the following code:`;
+
 const certificateLink = `<img src="https://avoninstitute.com/images/cert.svg">`;
 
 
@@ -65,13 +71,9 @@ export default function Certificate() {
             <Grid container spacing={1}>
                 <Grid item md={9} xs={9}>
                     <Grid container spacing={4}>
-                        <Grid item md={10} xs={10} >
-                            <Typography>
-                                {certificateTxt}
-                            </Typography>
-                            <Typography>
-                                {certificateLink}
-                            </Typography>
+                        <Grid item md={8} xs={8} >
+                            <p className={classes.pageDescription}>{certificateTxt}</p>
+                            <p className={classes.pageDescription}>{certificateLink}</p>
                         </Grid>
                     </Grid>
 

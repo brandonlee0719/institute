@@ -12,6 +12,12 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(2),
         color: "#808080"
     },
+    pageDescription: {
+        marginTop: theme.spacing(2),
+        color: "#808080",
+        fontWeight: '200',
+        fontSize: 'large'
+    },
     root: {
         flexGrow: 1,
         padding: "40px 0px",
@@ -36,9 +42,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const consultTxt = `Do you need help solving complex patient cases?  Our licensed physicians can help diagnose your patients, and create a custom treatment plan for them.
-        
-Membership in AvonEHR is required so our physicians can efficiently review patient information.  Contact us to make further arrangements.`;
+const consultTxt = `Do you need help solving complex patient cases?  Our licensed physicians can help diagnose your patients, and create a custom treatment plan for them.`;
+const consultTxt2 = `Membership in AvonEHR is required so our physicians can efficiently review patient information.  Contact us to make further arrangements.;`
+
+
 
 export default function Certificate() {
 
@@ -64,9 +71,10 @@ export default function Certificate() {
                 <Grid item md={9} xs={9}>
                     <Grid container spacing={4}>
                         <Grid item md={10} xs={10} >
-                            <Typography>
-                                {consultTxt}
-                            </Typography>
+
+                            <p className={classes.pageDescription}>{consultTxt}</p>
+                            <p className={classes.pageDescription}>{consultTxt2}</p>
+
                         </Grid>
                     </Grid>
                 </Grid>
