@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { NavLink as RouterLink, useHistory } from "react-router-dom";
 
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Grid from "@material-ui/core/Grid";
 
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
+import RadioButtonUncheckedOutlinedIcon from '@material-ui/icons//RadioButtonUncheckedOutlined';
+
+import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
+import PictureAsPdfOutlinedIcon from '@material-ui/icons/PictureAsPdfOutlined';
+
 import accordionService from "../../../../../../services/accordion.service";
 import useAuth from "../../../../../../hooks/useAuth";
+import { map } from "lodash";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,11 +35,41 @@ const useStyles = makeStyles((theme) => ({
     color: "#F9C802",
     marginRight: "15px"
   },
+  accordionSubIcon: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+    color: "#F9C802",
+    marginRight: "15px"
+  },
+  accordionSubText: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    marginBottom: "5px"
+  },
+  accordionListIcon: {
+    fontSize: theme.typography.pxToRem(17),
+    fontWeight: theme.typography.fontWeightRegular,
+    color: "#A9A9A9",
+  },
+  listView: {
+    marginBottom: "15px"
+  },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
     lineHeight: "25px"
   },
+  finishedClassHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+    lineHeight: "25px",
+    marginLeft: "auto"
+  },
+  subLink: {
+    color: "black",
+    textDecoration: "none"
+  }
 }));
 
 const AccordionSideBar = () => {
@@ -40,25 +78,24 @@ const AccordionSideBar = () => {
   const classes = useStyles();
   const [accordianMenuDetails, setAccordianMenuDetails] = useState([]);
   const [accordionClassData, setAccordionClassData] = useState([]);
+  const [consolidatedData, setConsolidatedData] = useState([]);
 
 
   async function fetchAccordianMenu() {
+    const filteredData = [];
     const data = await accordionService.getAccordian();
     const classData = await accordionService.getAccordionClassdata(user.id);
 
+    data.map(e => {
+      const matchedClass = classData.filter(curr => curr.module_id === e.id);
+      const totalNumberOfClass = matchedClass.length;
+      const classesFinished = matchedClass.filter(item => item.completion_dt !== null);
 
-    //id: 1
-    // name: "Case Studies"
-    // sort: 1
+      e.totalNumberOfClass = totalNumberOfClass;
+      e.classesFinished = classesFinished.length;
+      e.class = matchedClass;
 
-    //     completion_dt: null
-    // id: 1
-    // length: null
-    // module_id: 23
-    // sort: 10
-    // title: "GI MAP Interpretive Guide.pdf"
-    // type: "P"
-
+    })
     setAccordianMenuDetails(data);
     setAccordionClassData(classData);
 
@@ -78,14 +115,76 @@ const AccordionSideBar = () => {
             id={index}
             className={classes.accordionColor}
           >
-            <CheckCircleIcon className={classes.accordionIcon} />
+            {
+              item.class.length > 0 ?
+                item.class[0].completion_dt === null ? <RadioButtonUncheckedOutlinedIcon className={classes.accordionIcon} /> : <CheckCircleOutlineOutlinedIcon className={classes.accordionIcon} />
+                :
+                <RadioButtonUncheckedOutlinedIcon className={classes.accordionIcon} />
+            }
+
             <Typography className={classes.heading}>{item.name}</Typography>
+
+            <Typography className={classes.finishedClassHeading}>{item.classesFinished}/{item.totalNumberOfClass}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget.
+            <Typography style={{ maxWidth: "250px" }} >
+              {
+
+                item.class.map(e => {
+                  return (
+
+                    <div >
+                      <Grid container>
+                        <Grid item md={12} xs={12} style={{ paddingLeft: "12px" }}>
+                          {
+                            e.completion_dt === null ?
+                              <p className={classes.accordionSubText}><RadioButtonUncheckedOutlinedIcon className={classes.accordionSubIcon} />
+                                <RouterLink className={classes.subLink} to={`/class/${e.id}`} >
+                                  {e.title}
+                                </RouterLink>
+
+                              </p>
+                              :
+                              <p className={classes.accordionSubText} ><CheckCircleOutlineOutlinedIcon className={classes.accordionSubIcon} />
+                                <RouterLink to={`/class/${e.id}`} >
+                                  {e.title}
+                                </RouterLink>
+                              </p>
+                          }
+
+                        </Grid>
+                      </Grid>
+                      {
+                        e.type == 'P' ?
+                          <Grid container spacing={3}>
+                            <Grid item md={1} xs={1}></Grid>
+                            <Grid item md={1} xs={1} style={{ paddingLeft: "20px" }}>
+                              <p className={classes.listView}><PictureAsPdfOutlinedIcon className={classes.accordionListIcon} /></p>
+                            </Grid>
+
+                            <Grid item md={5} xs={5}>
+                              PDF
+                            </Grid>
+                          </Grid>
+                          :
+                          <Grid container spacing={1}>
+                            <Grid item md={1} xs={1}></Grid>
+                            <Grid item md={2} xs={1} style={{ paddingLeft: "20px" }}>
+                              <p className={classes.listView}><VideocamOutlinedIcon className={classes.accordionListIcon} /></p>
+                            </Grid>
+
+                            <Grid item md={5} xs={5}>
+                              Video - {e.length} MIN
+                            </Grid>
+                          </Grid>
+                      }
+
+                    </div>
+                  )
+                })
+              }
             </Typography>
+
           </AccordionDetails>
         </Accordion>
       </div>

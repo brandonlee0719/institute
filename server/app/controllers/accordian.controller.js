@@ -45,7 +45,7 @@ const getClassData = async (req, res) => {
     try {
 
         const accordionClassResponse = await pgClient.query(`SELECT c.id, c.title, c.type, c.length, c.module_id, c.sort, cc.completion_dt from class c left join client_class cc on cc.class_id = c.id
-            and client_id = $1 WHERE status='A'`);
+            and client_id =$1 WHERE status='A'`, [req.params.id]);
 
 
         if (!accordionClassResponse.rowCount) {
