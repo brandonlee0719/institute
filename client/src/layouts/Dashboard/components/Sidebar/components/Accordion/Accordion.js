@@ -17,7 +17,7 @@ import PictureAsPdfOutlinedIcon from '@material-ui/icons/PictureAsPdfOutlined';
 
 import accordionService from "../../../../../../services/accordion.service";
 import useAuth from "../../../../../../hooks/useAuth";
-import { map } from "lodash";
+import HoverPopover from "../../../../../../components/HoverPopover";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -135,30 +135,36 @@ const AccordionSideBar = () => {
 
                     <div >
                       <Grid container>
-                        <Grid item md={12} xs={12} style={{ paddingLeft: "12px" }}>
+
+                        <Grid item md={1} xs={1}></Grid>
+                        <Grid item md={2} xs={2}>
                           {
                             e.completion_dt === null ?
-                              <p className={classes.accordionSubText}><RadioButtonUncheckedOutlinedIcon className={classes.accordionSubIcon} />
-                                <RouterLink className={classes.subLink} to={`/class/${e.id}`} >
-                                  {e.title}
-                                </RouterLink>
-
-                              </p>
+                              <RadioButtonUncheckedOutlinedIcon className={classes.accordionSubIcon} />
                               :
-                              <p className={classes.accordionSubText} ><CheckCircleOutlineOutlinedIcon className={classes.accordionSubIcon} />
-                                <RouterLink to={`/class/${e.id}`} >
-                                  {e.title}
-                                </RouterLink>
-                              </p>
+                              <CheckCircleOutlineOutlinedIcon className={classes.accordionSubIcon} />
                           }
 
                         </Grid>
+
+                        <Grid item md={9} xs={9}>
+
+                          <RouterLink className={classes.subLink} to={`/class/${e.id}`} >
+                            <HoverPopover
+                              bodyElement={e.title}
+                            >
+                              <p className={classes.accordionSubText}>{e.title}</p>
+                            </HoverPopover>
+                          </RouterLink>
+
+                        </Grid>
+
                       </Grid>
                       {
                         e.type == 'P' ?
-                          <Grid container spacing={3}>
-                            <Grid item md={1} xs={1}></Grid>
-                            <Grid item md={1} xs={1} style={{ paddingLeft: "20px" }}>
+                          <Grid container>
+                            <Grid item md={3} xs={3}></Grid>
+                            <Grid item md={1} xs={1}>
                               <p className={classes.listView}><PictureAsPdfOutlinedIcon className={classes.accordionListIcon} /></p>
                             </Grid>
 
@@ -168,8 +174,8 @@ const AccordionSideBar = () => {
                           </Grid>
                           :
                           <Grid container spacing={1}>
-                            <Grid item md={1} xs={1}></Grid>
-                            <Grid item md={2} xs={1} style={{ paddingLeft: "20px" }}>
+                            <Grid item md={3} xs={3}></Grid>
+                            <Grid item md={1} xs={1}>
                               <p className={classes.listView}><VideocamOutlinedIcon className={classes.accordionListIcon} /></p>
                             </Grid>
 
