@@ -7,27 +7,27 @@ export const client_pages = [
   {
     id: 1,
     title: "Home",
-    href: "/home",
+    href: "/client/home",
   },
   {
     id: 2,
     title: "Account",
-    href: "/account",
+    href: "/client/account",
   },
   {
     id: 3,
     title: "Search",
-    href: "/search",
+    href: "/client/search",
   },
   {
     id: 4,
     title: "Consult",
-    href: "/consult",
+    href: "/client/consult",
   },
   {
     id: 5,
     title: "Certificate",
-    href: "/certificate",
+    href: "/client/certificate",
   },
   {
     id: 6,
@@ -37,7 +37,7 @@ export const client_pages = [
   {
     id: 7,
     title: "Contact",
-    href: "/contact",
+    href: "/client/contact",
   },
   {
     id: 8,

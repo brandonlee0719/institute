@@ -15,7 +15,7 @@ const GuestGuard = ({ children }) => {
       case "CORPORATE":
         return <Redirect to="/corporate" />;
       default:
-        return <Redirect to="/home" />;
+        return <Redirect to="/client/home" />;
     }
   }
 

@@ -58,11 +58,45 @@ const routes = [
     component: lazy(() => import("./screens/errors/NotFound")),
   },
   {
-    exact: true,
-    guard: AuthGuard,
+    path: "/client",
+    guard: ClientPortalGuard,
     layout: DashboardLayout,
-    path: "/protected-area",
-    component: lazy(() => import("./screens/errors/Restricted")),
+    routes: [
+      {
+        exact: true,
+        path: "/client/home",
+        component: lazy(() => import("./screens/Client/Home")),
+      },
+      {
+        exact: true,
+        path: "/client/account",
+        component: lazy(() => import("./screens/Client/Account")),
+      },
+      {
+        exact: true,
+        path: "/client/search",
+        component: lazy(() => import("./screens/Client/Search")),
+      },
+      {
+        exact: true,
+        path: "/client/consult",
+        component: lazy(() => import("./screens/Client/Consult")),
+      },
+      {
+        exact: true,
+        path: "/client/certificate",
+        component: lazy(() => import("./screens/Client/Certificate")),
+      },
+      {
+        exact: true,
+        path: "/client/contact",
+        component: lazy(() => import("./screens/Client/Contact")),
+      },
+      {
+        path: "/client/class/:pathParam",
+        component: lazy(() => import("./screens/Client/Class")),
+      },
+    ],
   },
   {
     exact: true,
@@ -77,55 +111,6 @@ const routes = [
     layout: MainLayout,
     path: "/signup_client",
     component: lazy(() => import("./screens/Auth/SignUp")),
-  },
-  {
-    exact: true,
-    guard: ClientPortalGuard,
-    layout: DashboardLayout,
-    path: "/home",
-    component: lazy(() => import("./screens/Client/Home")),
-  },
-  {
-    exact: true,
-    guard: ClientPortalGuard,
-    layout: DashboardLayout,
-    path: "/account",
-    component: lazy(() => import("./screens/Client/Account")),
-  },
-  {
-    exact: true,
-    guard: ClientPortalGuard,
-    layout: DashboardLayout,
-    path: "/search",
-    component: lazy(() => import("./screens/Client/Search")),
-  },
-  {
-    exact: true,
-    guard: ClientPortalGuard,
-    layout: DashboardLayout,
-    path: "/consult",
-    component: lazy(() => import("./screens/Client/Consult")),
-  },
-  {
-    exact: true,
-    guard: ClientPortalGuard,
-    layout: DashboardLayout,
-    path: "/certificate",
-    component: lazy(() => import("./screens/Client/Certificate")),
-  },
-  {
-    exact: true,
-    guard: ClientPortalGuard,
-    layout: DashboardLayout,
-    path: "/contact",
-    component: lazy(() => import("./screens/Client/Contact")),
-  },
-  {
-    exact: true,
-    guard: ClientPortalGuard,
-    layout: DashboardLayout,
-    path: "/class/:pathParam",
-    component: lazy(() => import("./screens/Client/Class")),
   },
   {
     exact: true,
@@ -148,7 +133,7 @@ const routes = [
       {
         exact: true,
         path: "/",
-        component: lazy(() => import("./screens/Home")),
+        component: lazy(() => import("./screens/Client/Home")),
       },
       {
         component: () => <Redirect to="/404" />,

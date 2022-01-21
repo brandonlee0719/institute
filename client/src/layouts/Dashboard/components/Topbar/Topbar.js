@@ -196,7 +196,7 @@ const Topbar = (props) => {
       <Toolbar variant="dense" className={classes.toolbar}>
         <div className={classes.headerWithNav}>
           <Typography className={classes.title} variant="h6" noWrap>
-            <RouterLink to={user.login_url || "/home"} className={classes.titleAsLogo}>
+            <RouterLink to={user.login_url || "/client/home"} className={classes.titleAsLogo}>
               <img src={Logo} alt="Logo" className={classes.Logo} />
             </RouterLink>
           </Typography>
