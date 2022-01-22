@@ -39,7 +39,7 @@ export const renderRoutes = (routes = []) => (
                 <Layout>
                   {route.routes
                     ? renderRoutes(route.routes)
-                    : <Component {...props} />}
+                    : <Component {...props} key={new Date()} />}
                 </Layout>
               </Guard>
             )}
