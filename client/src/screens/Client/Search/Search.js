@@ -142,7 +142,7 @@ export default function Search() {
                             :
                             <Grid container spacing={1} style={{ paddingTop: '15px' }}>
                                 <Grid item md={12} xs={12} className={classes.headerWrap}>
-                                    <h2>No Data to Show</h2>
+                                    {/*<h2>No Data to Show</h2>*/}
                                 </Grid>
                             </Grid>
                     }
