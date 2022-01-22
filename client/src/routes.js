@@ -133,7 +133,7 @@ const routes = [
       {
         exact: true,
         path: "/",
-        component: lazy(() => import("./screens/Client/Home")),
+        component: lazy(() => import("./screens/Home")),
       },
       {
         component: () => <Redirect to="/404" />,
