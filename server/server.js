@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 const baseAPIPath = "/api/v1";
+app.use(baseAPIPath, require("./app/routes/user.routes"));
 app.use(baseAPIPath, require("./app/routes/config.routes"));
 app.use(baseAPIPath, require("./app/routes/index.routes"));
 app.use(baseAPIPath, require("./app/routes/login.routes"));

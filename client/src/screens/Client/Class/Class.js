@@ -21,7 +21,13 @@ import AccountService from "../../../services/account.service";
 import ClassService from "../../../services/class.service";
 import Alert from "../../../components/Alert";
 import { useParams, useLocation } from 'react-router-dom';
+import Pagination from "@material-ui/lab/Pagination";
 import parse from 'html-react-parser';
+import { pdfjs, Document, Page } from "react-pdf";
+
+pdfjs
+    .GlobalWorkerOptions
+    .workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 
 
@@ -48,7 +54,12 @@ const useStyles = makeStyles((theme) => ({
     Logo: {
         width: 240,
         height: 240,
-    }
+    },
+    PDFViewer: {
+        marginTop: theme.spacing(5),
+        marginBottom: theme.spacing(2),
+        marginLeft: theme.spacing(2),
+    },
 }));
 
 
@@ -59,20 +70,17 @@ export default function Class() {
     const { user, logout } = useAuth();
 
     const [selectedProvider, setSelectedProvider] = useState({});
-    const [dropDownVal, setDropDownVal] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [isDeleteUser, setIsDeleteUser] = useState(false);
+
     const [completed, setCompleted] = useState(false);
     const [classData, setClassData] = useState([]);
     const [classId, setClassId] = useState();
     const [clientId, setClientId] = useState();
+    const [totalPages, setTotalPages] = useState(null);
+    const [pageNumber, setPageNumber] = useState(1);
 
     const loc = useLocation();
 
-    const id = loc.pathname.split('/')[2];
+    const id = loc.pathname.split('/')[3];
 
     const handleSwitchChange = async (event) => {
         const data = {
@@ -104,13 +112,24 @@ export default function Class() {
         }
     };
 
+    const onDocumentLoadSuccess = ({ numPages }) => {
+        setTotalPages(numPages);
+        setPageNumber(1);
+    };
+
+    const handleChange = (event, value) => {
+        setPageNumber(value);
+    };
+
 
     useEffect(() => {
+
         setClassId(id);
         setClientId(user.id);
         ClassService.getClass(id).then(
             (response) => {
                 if (response) {
+                    console.log(response[0])
                     setCompleted(response[0].completion_dt === null ? false : true)
                     setClassData(response[0]);
                 }
@@ -142,7 +161,7 @@ export default function Class() {
                 <Grid item md={9} xs={9}>
                     <Grid container spacing={1}>
                         {
-                            classData.type === 'v' ?
+                            classData.type === 'V' ?
                                 <Grid item md={8} xs={8} >
                                     <ReactPlayer
                                         url={classData.url}
@@ -151,10 +170,17 @@ export default function Class() {
                                 </Grid>
                                 :
                                 <Grid item md={8} xs={8} >
-                                    <ReactPlayer
-                                        url={classData.url}
-                                        width={550}
-                                    />
+                                    <div className={classes.PDFViewer}>
+                                        <Document
+                                            file={classData.url}
+                                            onLoadSuccess={onDocumentLoadSuccess}
+                                        >
+                                            <Page pageNumber={pageNumber} />
+                                        </Document>
+                                        <div className={classes.PaginationWrap}>
+                                            <Pagination count={totalPages} shape="rounded" onChange={handleChange} />
+                                        </div>
+                                    </div>
                                 </Grid>
                         }
 

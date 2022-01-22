@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink as RouterLink, useHistory } from "react-router-dom";
+import { NavLink as RouterLink, useHistory, useLocation } from "react-router-dom";
 
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -80,6 +80,9 @@ const AccordionSideBar = () => {
   const [accordionClassData, setAccordionClassData] = useState([]);
   const [consolidatedData, setConsolidatedData] = useState([]);
 
+  const history = useHistory();
+
+  const loc = useLocation();
 
   async function fetchAccordianMenu() {
     const filteredData = [];
@@ -101,9 +104,20 @@ const AccordionSideBar = () => {
 
   }
 
+  const menuClick = (id) => {
+
+    try {
+      history.push(`/client/class/${id}`);
+      location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+
+  };
+
   useEffect(() => {
     fetchAccordianMenu();
-  }, []);
+  }, [loc.pathname.split('/')[3]]);
 
   return (
     accordianMenuDetails.map((item, index) => (
@@ -149,7 +163,7 @@ const AccordionSideBar = () => {
 
                         <Grid item md={9} xs={9}>
 
-                          <RouterLink className={classes.subLink} to={`/class/${e.id}`} >
+                          <RouterLink className={classes.subLink} to={`/client/class/${e.id}`}  >
                             <HoverPopover
                               bodyElement={e.title}
                             >
@@ -193,7 +207,7 @@ const AccordionSideBar = () => {
 
           </AccordionDetails>
         </Accordion>
-      </div>
+      </div >
     ))
   );
 };

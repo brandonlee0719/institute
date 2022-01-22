@@ -66,13 +66,13 @@ export default function SearchTable(props) {
                         <TableRow key={row.id}>
                             <TableCell component="th" scope="row">
 
-                                <RouterLink to={`/class/${row.id}`} >
+                                <RouterLink to={`/client/class/${row.id}`} >
                                     {row.name}
                                 </RouterLink>
 
                             </TableCell>
                             <TableCell component="th" scope="row">
-                                <RouterLink to={`/class/${row.id}`} >
+                                <RouterLink to={`/client/class/${row.id}`} >
                                     {row.title}
                                 </RouterLink>
 
