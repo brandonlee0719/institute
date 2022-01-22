@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const consultTxt = `Do you need help solving complex patient cases?  Our licensed physicians can help diagnose your patients, and create a custom treatment plan for them.`;
-const consultTxt2 = `Membership in AvonEHR is required so our physicians can efficiently review patient information.  Contact us to make further arrangements.;`
+const consultTxt2 = `Membership in AvonEHR is required so our physicians can efficiently review patient information.  Contact us to make further arrangements.`
 
 
 
