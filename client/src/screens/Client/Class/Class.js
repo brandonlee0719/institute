@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { NavLink as RouterLink, useHistory, useLocation } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
@@ -11,7 +12,7 @@ import ReactPlayer from "react-player";
 import Clinios from "../../../assets/img/Clinios.png";
 import Help from "../../../assets/img/Help.png";
 import useAuth from "../../../hooks/useAuth";
-import { statusToColorCode, isEmpty } from "../../../utils/helpers";
+import { statusToColorCode, isEmpty, dateTimeFormat } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
 import Select from "@material-ui/core/Select";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -20,10 +21,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AccountService from "../../../services/account.service";
 import ClassService from "../../../services/class.service";
 import Alert from "../../../components/Alert";
-import { useParams, useLocation } from 'react-router-dom';
+
 import Pagination from "@material-ui/lab/Pagination";
 import parse from 'html-react-parser';
+import FileViewer from "react-file-viewer";
 import { pdfjs, Document, Page } from "react-pdf";
+import SampleDocViewer from "../../../components/common/SampleDocViewer";
 
 pdfjs
     .GlobalWorkerOptions
@@ -34,7 +37,8 @@ pdfjs
 const useStyles = makeStyles((theme) => ({
     pageTitle: {
         marginBottom: theme.spacing(2),
-        color: "#808080"
+        color: "black",
+        fontSize: "15px"
     },
     root: {
         flexGrow: 1,
@@ -80,6 +84,8 @@ export default function Class() {
 
     const loc = useLocation();
 
+    const history = useHistory();
+
     const id = loc.pathname.split('/')[3];
 
     const handleSwitchChange = async (event) => {
@@ -88,6 +94,8 @@ export default function Class() {
             classId: classId,
             classUpdate: event.target.checked
         };
+
+        setCompleted(event.target.checked);
         try {
 
             const updateClass = await ClassService.updateClassCompletion(data);
@@ -96,7 +104,7 @@ export default function Class() {
                     variant: "warning",
                 });
             } else {
-                setCompleted(event.target.checked);
+
                 enqueueSnackbar(`Successfully updated the class details.`, {
                     variant: "success",
                 });
@@ -121,6 +129,20 @@ export default function Class() {
         setPageNumber(value);
     };
 
+    const onError = (e) => {
+        enqueueSnackbar(e, { variant: "error" });
+        console.error("onError", e);
+    };
+
+    const handlePrevious = () => {
+        const prevId = parseInt(classId) - 1;
+        history.push(`/client/class/${prevId}`);
+    };
+
+    const handleNext = () => {
+        const nextId = parseInt(classId) + 1;
+        history.push(`/client/class/${nextId}`);
+    };
 
     useEffect(() => {
 
@@ -129,7 +151,7 @@ export default function Class() {
         ClassService.getClass(id).then(
             (response) => {
                 if (response) {
-                    console.log(response[0])
+
                     setCompleted(response[0].completion_dt === null ? false : true)
                     setClassData(response[0]);
                 }
@@ -143,6 +165,10 @@ export default function Class() {
     }, [])
 
     const highlightsVal = classData.length === 0 ? '' : parse(classData.highlight);
+
+    const file = 'https://www.diagnosticsolutionslab.com/sites/default/files/u16/GI-MAP-Interpretive-Guide.pdf'
+    const fileType = 'pdf'
+
 
     return (
         <div className={classes.root}>
@@ -166,21 +192,12 @@ export default function Class() {
                                     <ReactPlayer
                                         url={classData.url}
                                         width={500}
+                                        controls={true}
                                     />
                                 </Grid>
                                 :
                                 <Grid item md={8} xs={8} >
-                                    <div className={classes.PDFViewer}>
-                                        <Document
-                                            file={classData.url}
-                                            onLoadSuccess={onDocumentLoadSuccess}
-                                        >
-                                            <Page pageNumber={pageNumber} />
-                                        </Document>
-                                        <div className={classes.PaginationWrap}>
-                                            <Pagination count={totalPages} shape="rounded" onChange={handleChange} />
-                                        </div>
-                                    </div>
+                                    <SampleDocViewer filePath={classData.url} />
                                 </Grid>
                         }
 
@@ -202,7 +219,7 @@ export default function Class() {
                                 />
                             </Grid>
                             <Grid item md={12} xs={12}>
-                                <label>Completion Date: {classData.completion_dt === null ? 'N/A' : classData.completion_dt}</label>
+                                <label>Completion Date: {classData.completion_dt === null ? '-' : dateTimeFormat(classData.completion_dt)}</label>
                             </Grid>
 
                             <Grid item md={12} xs={12}>
@@ -210,7 +227,7 @@ export default function Class() {
                                     style={{ backgroundColor: '#2979ff', marginTop: '20px' }}
                                     variant="contained"
                                     color="secondary"
-                                //onClick={handleUpdateAccount}
+                                    onClick={handlePrevious}
                                 >
                                     Previous
                                 </Button>
@@ -218,7 +235,7 @@ export default function Class() {
                                     style={{ backgroundColor: '#2979ff', marginTop: '20px', marginLeft: '15px' }}
                                     variant="contained"
                                     color="secondary"
-                                //onClick={handleUpdateAccount}
+                                    onClick={handleNext}
                                 >
                                     Next
                                 </Button>
@@ -229,8 +246,8 @@ export default function Class() {
                     </Grid>
 
                     <Grid container spacing={1} style={{ marginTop: "30px" }}>
-                        <Grid item md={12} xs={12}>
-                            <Typography> Highlights</Typography>
+                        <Grid item md={12} xs={12} >
+                            <Typography style={{ color: "black", fontSize: "15px" }}> Highlights</Typography>
                         </Grid>
                         <Grid item md={12} xs={12}>
                             {highlightsVal}
@@ -238,14 +255,6 @@ export default function Class() {
                     </Grid>
                 </Grid>
 
-                <Grid item md={3} xs={3}>
-                    <Grid item md={6} xs={12}>
-                        <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
-                    </Grid>
-                    <Grid item md={6} xs={12}>
-                        <img src={Help} alt="Help ad" className={classes.Logo} />
-                    </Grid>
-                </Grid>
 
             </Grid>
 

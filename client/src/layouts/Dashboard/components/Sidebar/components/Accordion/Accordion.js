@@ -45,15 +45,15 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    marginBottom: "5px"
+    marginBottom: "5px",
   },
   accordionListIcon: {
     fontSize: theme.typography.pxToRem(17),
     fontWeight: theme.typography.fontWeightRegular,
-    color: "#A9A9A9",
+    color: "black",
   },
   listView: {
-    marginBottom: "15px"
+    marginBottom: "10px"
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -69,6 +69,10 @@ const useStyles = makeStyles((theme) => ({
   subLink: {
     color: "black",
     textDecoration: "none"
+  },
+  subText: {
+    fontSize: "10px",
+    color: "black"
   }
 }));
 
@@ -103,17 +107,6 @@ const AccordionSideBar = () => {
     setAccordionClassData(classData);
 
   }
-
-  const menuClick = (id) => {
-
-    try {
-      history.push(`/client/class/${id}`);
-      location.reload();
-    } catch (err) {
-      console.error(err);
-    }
-
-  };
 
   useEffect(() => {
     fetchAccordianMenu();
@@ -183,7 +176,7 @@ const AccordionSideBar = () => {
                             </Grid>
 
                             <Grid item md={5} xs={5}>
-                              PDF
+                              <p className={classes.subText}>PDF</p>
                             </Grid>
                           </Grid>
                           :
@@ -194,7 +187,7 @@ const AccordionSideBar = () => {
                             </Grid>
 
                             <Grid item md={5} xs={5}>
-                              Video - {e.length} MIN
+                              <p className={classes.subText}>VIDEO - {e.length} MIN</p>
                             </Grid>
                           </Grid>
                       }

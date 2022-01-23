@@ -77,6 +77,7 @@ export default function Home() {
             <Grid item md={5} xs={5} >
               <ReactPlayer
                 url="https://www.youtube.com/watch?v=KoIBI2rbdHA"
+                controls={true}
               />
             </Grid>
           </Grid>
@@ -90,15 +91,6 @@ export default function Home() {
               <p className={classes.pageDescription} >To learn more about AvonEHR software, visit www.AvonEHR.com.</p>
             </Grid>
 
-          </Grid>
-        </Grid>
-
-        <Grid item md={3} xs={3}>
-          <Grid item md={6} xs={12}>
-            <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <img src={Help} alt="Help ad" className={classes.Logo} />
           </Grid>
         </Grid>
 

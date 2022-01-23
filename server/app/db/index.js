@@ -12,10 +12,10 @@ module.exports = {
     return res
   },
 
-  async getClient() {
+  async getClient(text, params) {
     const client = await pool.connect()
-    const {query} = client
-    const {release} = client
+    const { query } = client
+    const { release } = client
     // set a timeout of 5 seconds, after which we will log this client's last query
     const timeout = setTimeout(() => {
       console.error('A client has been checked out for more than 5 seconds!')
