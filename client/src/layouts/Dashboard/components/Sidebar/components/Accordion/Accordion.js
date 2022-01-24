@@ -19,7 +19,6 @@ import accordionService from "../../../../../../services/accordion.service";
 import useAuth from "../../../../../../hooks/useAuth";
 import HoverPopover from "../../../../../../components/HoverPopover";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -93,6 +92,7 @@ const AccordionSideBar = () => {
     const data = await accordionService.getAccordian();
     const classData = await accordionService.getAccordionClassdata(user.id);
 
+
     data.map(e => {
       const matchedClass = classData.filter(curr => curr.module_id === e.id);
       const totalNumberOfClass = matchedClass.length;
@@ -107,6 +107,7 @@ const AccordionSideBar = () => {
     setAccordionClassData(classData);
 
   }
+
 
   useEffect(() => {
     fetchAccordianMenu();

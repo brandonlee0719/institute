@@ -28,6 +28,7 @@ import FileViewer from "react-file-viewer";
 import { pdfjs, Document, Page } from "react-pdf";
 import SampleDocViewer from "../../../components/common/SampleDocViewer";
 
+
 pdfjs
     .GlobalWorkerOptions
     .workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     pageTitle: {
         marginBottom: theme.spacing(2),
         color: "black",
-        fontSize: "15px"
+        fontSize: "14px"
     },
     root: {
         flexGrow: 1,
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         marginTop: "5px",
-        fontSize: "15px",
+        fontSize: "14px",
         width: 200
     },
     headerWrap: {
@@ -64,6 +65,16 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(2),
         marginLeft: theme.spacing(2),
     },
+    highlightValue: {
+        color: "gray",
+        fontWeight: "400",
+        fontSize: "small"
+    },
+    highlighTitle: {
+        color: "black",
+        fontSize: "14px"
+    }
+
 }));
 
 
@@ -95,19 +106,26 @@ export default function Class() {
             classUpdate: event.target.checked
         };
 
+        classData.completion_dt = new Date();
         setCompleted(event.target.checked);
+
         try {
 
             const updateClass = await ClassService.updateClassCompletion(data);
+
+
             if (updateClass === '') {
                 enqueueSnackbar(`Could not find your class details.`, {
                     variant: "warning",
                 });
             } else {
 
+
                 enqueueSnackbar(`Successfully updated the class details.`, {
                     variant: "success",
                 });
+
+                history.go(0);
 
             }
 
@@ -219,7 +237,7 @@ export default function Class() {
                                 />
                             </Grid>
                             <Grid item md={12} xs={12}>
-                                <label>Completion Date: {classData.completion_dt === null ? '-' : dateTimeFormat(classData.completion_dt)}</label>
+                                <label style={{ fontSize: "14px" }}>Completion Date: {classData.completion_dt === null ? '-' : dateTimeFormat(classData.completion_dt)}</label>
                             </Grid>
 
                             <Grid item md={12} xs={12}>
@@ -247,10 +265,10 @@ export default function Class() {
 
                     <Grid container spacing={1} style={{ marginTop: "30px" }}>
                         <Grid item md={12} xs={12} >
-                            <Typography style={{ color: "black", fontSize: "15px" }}> Highlights</Typography>
+                            <Typography className={classes.highlighTitle}> Highlights</Typography>
                         </Grid>
                         <Grid item md={12} xs={12}>
-                            {highlightsVal}
+                            <p className={classes.highlightValue}> {highlightsVal}</p>
                         </Grid>
                     </Grid>
                 </Grid>
