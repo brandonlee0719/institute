@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import { makeStyles } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
+
+
 import Grid from "@material-ui/core/Grid";
 import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
@@ -13,7 +13,13 @@ import Help from "../../../assets/img/Help.png";
 import useAuth from "../../../hooks/useAuth";
 import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
-import Select from "@material-ui/core/Select";
+import {
+    Select,
+    MenuItem,
+    InputLabel,
+    FormControl,
+    makeStyles,
+} from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -31,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
         padding: "40px 0px",
     },
     formControl: {
-        display: "flex",
-        flexDirection: "row",
         marginTop: "5px",
         fontSize: "15px",
         width: 200
@@ -64,8 +68,34 @@ export default function Account() {
 
     const deleteMessage = "Your account will be deleted forever from our system and you won't be able to access it anymore.";
 
+    const options = [
+        { value: "", label: "License type:" },
+        { value: "MD", label: "MD" },
+        { value: "DO", label: "DO" },
+        { value: "ND", label: "ND" },
+        { value: "NMD", label: "NMD" },
+        { value: "DNM", label: "DNM" },
+        { value: "LAc", label: "LAc" },
+        { value: "DC", label: "DC" },
+        { value: "DDS", label: "DDS" },
+        { value: "NP", label: "NP" },
+        { value: "PA", label: "PA" },
+        { value: "RN", label: "RN" },
+        { value: "RD", label: "RD" },
+        { value: "PT", label: "PT" },
+        { value: "OT", label: "OT" },
+        { value: "DPM", label: "DPM" },
+        { value: "DPM", label: "DPM" },
+        { value: "MFT", label: "MFT" },
+        { value: "RPh", label: "RPh" },
+        { value: "PharmD", label: "PharmD" },
+        { value: "CNS", label: "CNS" },
+        { value: "Other license", label: "Other license" },
+        { value: "No active license", label: "No active license" }
+    ]
+
     const handleDropDown = (event) => {
-        setDropDownVal(event.target.value);
+        setDropDownVal(event);
     };
 
     const handleUpdateAccount = async () => {
@@ -213,35 +243,27 @@ export default function Account() {
                     <Grid container spacing={2}>
 
                         <Grid item md={5} xs={5} >
-                            <FormControl className={classes.formControl}>
 
+                            <FormControl variant="outlined" className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-outlined-label">License</InputLabel>
                                 <Select
+                                    labelId="demo-simple-select-outlined-label"
+                                    id="demo-simple-select-outlined"
                                     value={dropDownVal}
                                     onChange={handleDropDown}
-                                    style={{ width: '100%' }}
+                                    label="License"
                                 >
-                                    <option value="" defaultValue>License type: </option>
-                                    <option value="MD">MD</option>
-                                    <option value="DO">DO</option>
-                                    <option value="ND">ND</option>
-                                    <option value="NMD">NMD</option>
-                                    <option value="DNM">DNM</option>
-                                    <option value="LAc">LAc</option>
-                                    <option value="DC">DC</option>
-                                    <option value="DDS">DDS</option>
-                                    <option value="NP">NP</option>
-                                    <option value="PA">PA</option>
-                                    <option value="RN">RN</option>
-                                    <option value="RD">RD</option>
-                                    <option value="PT">PT</option>
-                                    <option value="OT">OT</option>
-                                    <option value="DPM">DPM</option>
-                                    <option value="MFT">MFT</option>
-                                    <option value="RPh">RPh</option>
-                                    <option value="PharmD">PharmD</option>
-                                    <option value="CNS">CNS</option>
-                                    <option value="Other">Other license</option>
-                                    <option value="">No active license</option>
+                                    {options.length
+                                        ? options.map((option) => (
+                                            <MenuItem key={option.value} value={option.value}>
+                                                {option.label}
+                                            </MenuItem>
+                                        ))
+                                        : (
+                                            <MenuItem value="">
+                                                No Items available
+                                            </MenuItem>
+                                        )}
                                 </Select>
                             </FormControl>
                         </Grid>
@@ -295,22 +317,13 @@ export default function Account() {
 
                 </Grid>
 
-                <Grid item md={3} xs={3}>
-                    <Grid item md={6} xs={12}>
-                        <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
-                    </Grid>
-                    <Grid item md={6} xs={12}>
-                        <img src={Help} alt="Help ad" className={classes.Logo} />
-                    </Grid>
-                </Grid>
-
             </Grid>
 
-            <Grid container>
+            <Grid container style={{ marginTop: "10em" }}>
                 <Typography>Delete my information and delete my account</Typography>
                 <Grid item md={12} xs={12}>
                     <Button
-                        style={{ backgroundColor: '#FFA500', marginTop: '20px' }}
+                        style={{ backgroundColor: '#FFA500', marginTop: '5px' }}
                         variant="contained"
                         color="secondary"
                         startIcon={<DeleteIcon />}

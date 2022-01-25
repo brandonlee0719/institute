@@ -134,7 +134,7 @@ export default function Search() {
                     {
                         searchData.length !== 0 ?
                             <Grid container spacing={1} style={{ paddingTop: '15px' }}>
-                                <Grid item md={6} xs={6} >
+                                <Grid item md={12} xs={12} >
                                     <SearchTable
                                         searchedData={searchData} />
                                 </Grid>
@@ -146,15 +146,6 @@ export default function Search() {
                                 </Grid>
                             </Grid>
                     }
-                </Grid>
-
-                <Grid item md={3} xs={3}>
-                    <Grid item md={6} xs={12}>
-                        <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
-                    </Grid>
-                    <Grid item md={6} xs={12}>
-                        <img src={Help} alt="Help ad" className={classes.Logo} />
-                    </Grid>
                 </Grid>
 
             </Grid>

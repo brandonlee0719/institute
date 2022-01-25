@@ -152,7 +152,7 @@ export default function Contact() {
                                     <Grid item md={8} xs={12} >
                                         <TextField
                                             id="subject"
-                                            label="subject"
+                                            label="Subject"
                                             variant="outlined"
                                             fullWidth
                                             value={subject}
@@ -189,15 +189,6 @@ export default function Contact() {
                                     </Grid>
                                 </Grid>
 
-                            </Grid>
-
-                            <Grid item md={3} xs={3}>
-                                <Grid item md={6} xs={12}>
-                                    <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
-                                </Grid>
-                                <Grid item md={6} xs={12}>
-                                    <img src={Help} alt="Help ad" className={classes.Logo} />
-                                </Grid>
                             </Grid>
 
                         </Grid>

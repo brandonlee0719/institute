@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#AEAEAE",
     padding: "10px 10px",
     textDecoration: "none",
+    fontWeight: "600"
   },
   patientLink: {
     color: "#AEAEAE",
@@ -196,7 +197,7 @@ const Topbar = (props) => {
       <Toolbar variant="dense" className={classes.toolbar}>
         <div className={classes.headerWithNav}>
           <Typography className={classes.title} variant="h6" noWrap>
-            <RouterLink to={user.login_url || "/client/home"} className={classes.titleAsLogo}>
+            <RouterLink to="/client/home" className={classes.titleAsLogo}>
               <img src={Logo} alt="Logo" className={classes.Logo} />
             </RouterLink>
           </Typography>

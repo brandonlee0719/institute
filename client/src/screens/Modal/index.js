@@ -64,7 +64,7 @@ export default function CustomizedDialogs(params) {
 
     return (
         <div>
-            <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+            <Dialog fullWidth={true} maxWidth="lg" onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
                     {title}
                 </DialogTitle>

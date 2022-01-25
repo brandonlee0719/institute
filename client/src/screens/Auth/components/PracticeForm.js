@@ -2,13 +2,19 @@ import React, { useState } from "react";
 
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
-import FormControl from "@material-ui/core/FormControl";
+
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
+import {
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  makeStyles,
+} from "@material-ui/core";
 
 import Link from "@material-ui/core/Link";
-import Select from "@material-ui/core/Select";
-import { makeStyles } from "@material-ui/core/styles";
+
 import TextField from "@material-ui/core/TextField";
 
 import Alert from "@material-ui/lab/Alert";
@@ -40,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  formControl: {
+    marginTop: "5px",
+    fontSize: "15px",
+    width: 200
+  },
   meta: {
     textAlign: "right",
     "& a": {
@@ -49,6 +60,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const options = [
+  { value: "", label: "License type:" },
+  { value: "MD", label: "MD" },
+  { value: "DO", label: "DO" },
+  { value: "ND", label: "ND" },
+  { value: "NMD", label: "NMD" },
+  { value: "DNM", label: "DNM" },
+  { value: "LAc", label: "LAc" },
+  { value: "DC", label: "DC" },
+  { value: "DDS", label: "DDS" },
+  { value: "NP", label: "NP" },
+  { value: "PA", label: "PA" },
+  { value: "RN", label: "RN" },
+  { value: "RD", label: "RD" },
+  { value: "PT", label: "PT" },
+  { value: "OT", label: "OT" },
+  { value: "DPM", label: "DPM" },
+  { value: "DPM", label: "DPM" },
+  { value: "MFT", label: "MFT" },
+  { value: "RPh", label: "RPh" },
+  { value: "PharmD", label: "PharmD" },
+  { value: "CNS", label: "CNS" },
+  { value: "Other license", label: "Other license" },
+  { value: "No active license", label: "No active license" }
+]
 const PracticeForm = ({ onFormSubmit, ...props }) => {
   const { errors } = props;
   const classes = useStyles();
@@ -225,35 +261,27 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         helperText={`${lastName.length >= 35 ? "Enter a last name between 35 charecter" : ""
           }`}
       />
-      <FormControl className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-outlined-label">License</InputLabel>
         <Select
-          native
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
           value={dropDownVal}
           onChange={handleChange}
-
+          autoWidth={true}
+          label="License"
         >
-          <option value="" defaultValue>License type: </option>
-          <option value="MD">MD</option>
-          <option value="DO">DO</option>
-          <option value="ND">ND</option>
-          <option value="NMD">NMD</option>
-          <option value="DNM">DNM</option>
-          <option value="LAc">LAc</option>
-          <option value="DC">DC</option>
-          <option value="DDS">DDS</option>
-          <option value="NP">NP</option>
-          <option value="PA">PA</option>
-          <option value="RN">RN</option>
-          <option value="RD">RD</option>
-          <option value="PT">PT</option>
-          <option value="OT">OT</option>
-          <option value="DPM">DPM</option>
-          <option value="MFT">MFT</option>
-          <option value="RPh">RPh</option>
-          <option value="PharmD">PharmD</option>
-          <option value="CNS">CNS</option>
-          <option value="Other">Other license</option>
-          <option value="">No active license</option>
+          {options.length
+            ? options.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))
+            : (
+              <MenuItem value="">
+                No Items available
+              </MenuItem>
+            )}
         </Select>
       </FormControl>
 

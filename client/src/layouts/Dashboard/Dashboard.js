@@ -71,6 +71,7 @@ const Dashboard = (props) => {
       <Container maxWidth="xl" className={classes.content}>
         {children}
       </Container>
+
       <Footer />
     </div>
   );
