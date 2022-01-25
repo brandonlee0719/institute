@@ -8,8 +8,10 @@ const getAccordianMenu = async (req, res) => {
 
     try {
 
-        const accordianResponse = await db.query(`SELECT m.id, m.name, m.sort FROM module m WHERE m.status = 'A'`);
-
+        const accordianResponse = await db.query(`/*accordian module*/ select m.id, m.name, m.sort 
+            from module m 
+            where m.status = 'A'
+            `);
 
         if (!accordianResponse.rowCount) {
             errorMessage.message = "Client Cannot be registered";
@@ -44,12 +46,15 @@ const getClassData = async (req, res) => {
 
     try {
 
-        const accordionClassResponse = await db.query(`SELECT c.id, c.title, c.type, c.length, c.module_id, c.sort, cc.completion_dt from class c left join client_class cc on cc.class_id = c.id
-            and client_id =$1 WHERE status='A'`, [req.params.id]);
-
+        const accordionClassResponse = await db.query(`/*accordian class*/ select c.id, c.title, c.type, c.length, c.module_id, c.sort, cc.completion_dt 
+            from class c 
+            left join client_class cc on cc.class_id = c.id
+            and client_id = $1 
+            where status='A'
+            `, [req.params.id]);
 
         if (!accordionClassResponse.rowCount) {
-            errorMessage.message = "Accordion Class Data cannot be found.";
+            errorMessage.message = "Accordion class data cannot be found.";
             res.status(status.notfound).send(errorMessage);
         }
 

@@ -8,10 +8,12 @@ const getClass = async (req, res) => {
 
     try {
 
-
-        const classResponse = await db.query(`SELECT c.title, c.url, c.type, c.length, c.module_id, c.highlight, cc.completion_dt FROM class c left join client_class cc on cc.class_id = c.id
-        WHERE c.id = $1 and status = 'A'`, [req.params.id]);
-
+        const classResponse = await db.query(`select c.title, c.url, c.type, c.length, c.module_id, c.highlight, cc.completion_dt 
+        from class c 
+        left join client_class cc on cc.class_id = c.id
+        where c.id = $1 
+        and status = 'A'
+        `, [req.params.id]);
 
         if (!classResponse.rowCount) {
             errorMessage.message = "Could not fetch User";

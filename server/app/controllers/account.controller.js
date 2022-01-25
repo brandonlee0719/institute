@@ -8,11 +8,13 @@ const getAccountUser = async (req, res) => {
 
     try {
 
-        const accountUserResponse = await db.query(`SELECT firstname, lastname, email, license FROM client WHERE id = $1`, [req.params.id]);
-
+        const accountUserResponse = await db.query(`/*account*/ select firstname, lastname, email, license 
+            from client 
+            where id = $1
+            `, [req.params.id]);
 
         if (!accountUserResponse.rowCount) {
-            errorMessage.message = "Could not fetch User";
+            errorMessage.message = "Could not fetch client";
             res.status(status.notfound).send(errorMessage);
         }
 
@@ -38,8 +40,10 @@ const updateAccountUser = async (req, res) => {
     const { firstname, lastname, email, license, password, id } = req.body;
     //user.password = bcrypt.hashSync(user.password, 8);
     try {
-        const updateResponse = await db.query(`UPDATE client SET firstname = '${firstname}', lastname = '${lastname}' , license = '${license}',
-         email = '${email}', password = '${bcrypt.hashSync(password, 8)}' WHERE id = '${id}'`);
+        const updateResponse = await db.query(`update client 
+            set firstname = '${firstname}', lastname = '${lastname}' , license = '${license}', email = '${email}', password = '${bcrypt.hashSync(password, 8)}' 
+            where id = '${id}'
+            `);
 
         if (!updateResponse.rowCount) {
             errorMessage.message = "Could not udpate User";
@@ -72,8 +76,8 @@ const deleteAccountUser = async (req, res) => {
     console.log(req.params);
     try {
 
-        await db.query(`DELETE FROM client_class WHERE client_id = ${req.params.id} `);
-        await db.query(`DELETE FROM client WHERE id = ${req.params.id} `);
+        await db.query(`delete from client_class where client_id = ${req.params.id} `);
+        await db.query(`delete from client where id = ${req.params.id} `);
 
         const successMessage = "User Deleted Successfully";
 
