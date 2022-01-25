@@ -54,8 +54,8 @@ export default function Footer() {
           {" "}
           {/* {new Date().getFullYear()}
            */}
-          {"2020"}
-          {" Clinios Institute"}
+          {/*"2020"*/}
+          {" Avon Institute"}
           {/* {` ${process.env.REACT_APP_SITE_TITLE}`}
           {" "}
           - User
