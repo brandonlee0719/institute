@@ -10,9 +10,9 @@ exports.searchModule = async (req, res) => {
 
     try {
 
+
         const searchResponse = await db.query(`SELECT c.id, m.name, c.title FROM class c LEFT JOIN module m on m.id = c.module_id
         WHERE c.highlight like '%${term}%' AND c.status = 'A' AND m.status = 'A' ORDER BY m.sort, c.sort LIMIT 20`);
-
 
         if (!searchResponse.rowCount) {
             errorMessage.message = "No result found";

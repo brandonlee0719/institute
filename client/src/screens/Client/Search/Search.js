@@ -9,7 +9,7 @@ import { useSnackbar } from "notistack";
 import ReactPlayer from "react-player";
 
 import Clinios from "../../../assets/img/Clinios.png";
-import Help from "../../../assets/img/Help.png";
+import Help from "../../../assets/img/help.png";
 import useAuth from "../../../hooks/useAuth";
 import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
@@ -146,7 +146,9 @@ export default function Search() {
                             :
                             <Grid container spacing={1} style={{ paddingTop: '15px' }}>
                                 <Grid item md={12} xs={12} className={classes.headerWrap}>
+
                                     <h2>{noDataFound}</h2>
+
                                 </Grid>
                             </Grid>
                     }
