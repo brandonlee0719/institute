@@ -8,7 +8,7 @@ const getAccordianMenu = async (req, res) => {
 
     try {
 
-        const accordianResponse = await db.query(`/*accordian module*/ select m.id, m.name, m.sort 
+        const accordianResponse = await db.query(`/*accordian modules*/ select m.id, m.name, m.sort 
             from module m 
             where m.status = 'A'
             `);
@@ -46,10 +46,10 @@ const getClassData = async (req, res) => {
 
     try {
 
-        const accordionClassResponse = await db.query(`/*accordian class*/ select c.id, c.title, c.type, c.length, c.module_id, c.sort, cc.completion_dt 
+        const accordionClassResponse = await db.query(`/*accordian classes*/ select c.id, c.title, c.type, c.length, c.module_id, c.sort, cc.completion_dt 
             from class c 
             left join client_class cc on cc.class_id = c.id
-            and client_id = $1 
+                and client_id = $1 
             where status='A'
             `, [req.params.id]);
 

@@ -36,7 +36,7 @@ exports.signin = async (req, res) => {
   // update user login_dt
   await db.query(`/*login*/ update client 
     set login_dt=now() 
-    where id =${user.id}
+    where id = ${user.id}
     `);
 
   const token = jwt.sign(

@@ -8,7 +8,7 @@ const getClass = async (req, res) => {
 
     try {
 
-        const classResponse = await db.query(`select c.title, c.url, c.type, c.length, c.module_id, c.highlight, cc.completion_dt 
+        const classResponse = await db.query(`/*class page (class.png)*/ select c.title, c.url, c.type, c.length, c.module_id, c.highlight, cc.completion_dt 
         from class c 
         left join client_class cc on cc.class_id = c.id
         where c.id = $1 
