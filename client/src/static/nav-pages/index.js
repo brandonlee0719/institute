@@ -31,20 +31,20 @@ export const client_pages = [
   },
   {
     id: 6,
-    title: "AvonEHR",
-    href: "/avonEHR",
-  },
-  {
-    id: 7,
     title: "Contact",
     href: "/client/contact",
   },
   {
-    id: 8,
+    id: 7,
     icon: ExitToAppIcon,
     title: "Logout",
     href: "/",
     logout: true,
+  },
+  {
+    id: 8,
+    title: "AvonEHR",
+    href: "/avonEHR",
   },
 ];
 
