@@ -73,7 +73,7 @@ const updateAccountUser = async (req, res) => {
 const deleteAccountUser = async (req, res) => {
     // const pgClient = await db.getClient();
     //await pgClient.query('BEGIN')
-    console.log(req.params);
+
     try {
 
         await db.query(`delete from client_class where client_id = ${req.params.id}`);

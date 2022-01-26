@@ -64,33 +64,15 @@ export default function CustomizedDialogs(params) {
 
     return (
         <div>
-            <Dialog fullWidth={true} maxWidth="lg" onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    {title}
+            <Dialog fullWidth={true} maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                <DialogTitle id="customized-dialog-title" onClose={handleClose} style={{ textAlign: 'center' }}>
+                    <p style={{ fontSize: '25px' }}>{title}</p>
                 </DialogTitle>
                 <DialogContent dividers>
                     <Typography gutterBottom>
                         {body}
                     </Typography>
-                    <Typography gutterBottom>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                        in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-                        scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-                        auctor fringilla.
-                    </Typography>
                 </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose} color="primary">
-                        Close
-                    </Button>
-                </DialogActions>
             </Dialog>
         </div>
     );
