@@ -61,6 +61,8 @@ export default function Search() {
     const [search, setSearch] = useState('');
     const [searchData, setSearchData] = useState([]);
 
+    const [noDataFound, setNoDataFount] = useState('No data to show');
+
 
     const handleTextChange = (e) => {
         setSearch(e.target.value);
@@ -73,8 +75,10 @@ export default function Search() {
             }
             const searchResp = await SearchService.searchModule(data);
 
-            if (searchResp) {
+            if (searchResp !== '') {
                 setSearchData(searchResp);
+            } else {
+                setNoDataFount('No data found');
             }
 
         } catch (error) {
@@ -142,7 +146,7 @@ export default function Search() {
                             :
                             <Grid container spacing={1} style={{ paddingTop: '15px' }}>
                                 <Grid item md={12} xs={12} className={classes.headerWrap}>
-                                    <h2>No Data to Show</h2>
+                                    <h2>{noDataFound}</h2>
                                 </Grid>
                             </Grid>
                     }

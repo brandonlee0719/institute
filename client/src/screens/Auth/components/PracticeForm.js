@@ -212,7 +212,9 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
 
   const modalTitle = "Terms of Service";
 
-  const modalBody = "This is text for terms of service";
+  const modalBody = `These Terms of Service reflects the way our business works, the laws that apply to our company, and certain things we've always 
+   believed to be true. As a result, these Terms of Service help define our relationship with you interact with our services. For example, these terms include the 
+   following topic headings...`;
 
   return (
     <form className={classes.form} noValidate onSubmit={(event) => handleFormSubmission(event)}>
