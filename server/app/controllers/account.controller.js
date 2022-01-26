@@ -40,7 +40,7 @@ const updateAccountUser = async (req, res) => {
     const { firstname, lastname, email, license, password, id } = req.body;
     //user.password = bcrypt.hashSync(user.password, 8);
     try {
-        const updateResponse = await db.query(`update client 
+        const updateResponse = await db.query(`/*account*/ update client 
             set firstname = '${firstname}', lastname = '${lastname}' , license = '${license}', email = '${email}', password = '${bcrypt.hashSync(password, 8)}' 
             where id = '${id}'
             `);
@@ -76,8 +76,8 @@ const deleteAccountUser = async (req, res) => {
     console.log(req.params);
     try {
 
-        await db.query(`delete from client_class where client_id = ${req.params.id} `);
-        await db.query(`delete from client where id = ${req.params.id} `);
+        await db.query(`delete from client_class where client_id = ${req.params.id}`);
+        await db.query(`delete from client where id = ${req.params.id}`);
 
         const successMessage = "User Deleted Successfully";
 
