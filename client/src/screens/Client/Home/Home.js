@@ -9,7 +9,7 @@ import { useSnackbar } from "notistack";
 import ReactPlayer from "react-player";
 
 import Clinios from "../../../assets/img/Clinios.png";
-import Help from "../../../assets/img/Help.png";
+import Help from "../../../assets/img/help.png";
 import useAuth from "../../../hooks/useAuth";
 import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 
@@ -76,7 +76,7 @@ export default function Home() {
           <Grid container spacing={2}>
             <Grid item md={5} xs={5} >
               <ReactPlayer
-                url="https://www.youtube.com/watch?v=KoIBI2rbdHA"
+                url="https://www.youtube.com/watch?v=AXW_9O9U2sQ"
                 controls={true}
               />
             </Grid>
