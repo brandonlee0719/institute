@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 
 // import AdminGuard from "./components/AdminGuard"; //Might be used in future
-import AuthGuard from "./components/AuthGuard";
+
 import ClientPortalGuard from "./components/ClientPortalGuard";
 import GuestGuard from "./components/GuestGuard";
 import LoadingScreen from "./components/LoadingScreen";

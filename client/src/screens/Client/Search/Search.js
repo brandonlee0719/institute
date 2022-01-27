@@ -1,25 +1,13 @@
-import React, { useCallback, useEffect, useState } from "react";
-
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
-import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
-import ReactPlayer from "react-player";
-
-
 import useAuth from "../../../hooks/useAuth";
-import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
-import Select from "@material-ui/core/Select";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import SaveIcon from '@material-ui/icons/Save';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AccountService from "../../../services/account.service";
 import SearchService from "../../../services/search.service";
-import Alert from "../../../components/Alert";
 import SearchTable from "./SearchTable";
+import { isEmpty, dateTimeFormat } from "../../../utils/helpers";
 
 
 

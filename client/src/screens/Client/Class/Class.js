@@ -1,27 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink as RouterLink, useHistory, useLocation } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
 import ReactPlayer from "react-player";
 import useAuth from "../../../hooks/useAuth";
-import { statusToColorCode, isEmpty, dateTimeFormat } from "../../../utils/helpers";
-import { TextField, Button } from '@material-ui/core';
-import Select from "@material-ui/core/Select";
+import { isEmpty, dateTimeFormat } from "../../../utils/helpers";
+import { Button } from '@material-ui/core';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import SaveIcon from '@material-ui/icons/Save';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AccountService from "../../../services/account.service";
 import ClassService from "../../../services/class.service";
-import Alert from "../../../components/Alert";
-
-import Pagination from "@material-ui/lab/Pagination";
 import parse from 'html-react-parser';
-import FileViewer from "react-file-viewer";
 import { pdfjs, Document, Page } from "react-pdf";
 import SampleDocViewer from "../../../components/common/SampleDocViewer";
 
@@ -180,10 +170,6 @@ export default function Class() {
     }, [])
 
     const highlightsVal = classData.length === 0 ? '' : parse(classData.highlight);
-
-    const file = 'https://www.diagnosticsolutionslab.com/sites/default/files/u16/GI-MAP-Interpretive-Guide.pdf'
-    const fileType = 'pdf'
-
 
     return (
         <div className={classes.root}>

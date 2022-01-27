@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { NavLink as RouterLink, useHistory, useLocation } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import Switch from "@material-ui/core/Switch";
+
 import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
-import ReactPlayer from "react-player";
-
 
 import useAuth from "../../../hooks/useAuth";
-import { statusToColorCode, isEmpty } from "../../../utils/helpers";
+import { isEmpty } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
 import {
     Select,
@@ -17,7 +15,6 @@ import {
     FormControl,
     makeStyles,
 } from "@material-ui/core";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AccountService from "../../../services/account.service";

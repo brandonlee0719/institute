@@ -123,7 +123,7 @@ const AccordionSideBar = () => {
   return (
     accordianMenuDetails.map((item, index) => (
       <div key={index} className={classes.root}>
-        <Accordion defaultExpanded={true}>
+        <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls={index}
