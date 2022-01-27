@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Clinios from "../../../assets/img/Clinios.png";
+
 import CertificateImg from "../../../assets/img/Cert.svg"
-import Help from "../../../assets/img/help.png";
+
 import { isEmpty } from "../../../utils/helpers";
 
 const useStyles = makeStyles((theme) => ({

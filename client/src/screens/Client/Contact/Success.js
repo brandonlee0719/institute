@@ -7,9 +7,6 @@ import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
 import ReactPlayer from "react-player";
-
-import Clinios from "../../../assets/img/Clinios.png";
-import Help from "../../../assets/img/help.png";
 import useAuth from "../../../hooks/useAuth";
 import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
@@ -104,14 +101,7 @@ export default function Success(props) {
 
                 </Grid>
 
-                <Grid item md={3} xs={3}>
-                    <Grid item md={6} xs={12}>
-                        <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
-                    </Grid>
-                    <Grid item md={6} xs={12}>
-                        <img src={Help} alt="Help ad" className={classes.Logo} />
-                    </Grid>
-                </Grid>
+
             </Grid>
 
         </div>

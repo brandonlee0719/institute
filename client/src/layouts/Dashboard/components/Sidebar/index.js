@@ -9,7 +9,7 @@ import useAuth from "../../../../hooks/useAuth";
 import { client_pages } from "../../../../static/nav-pages";
 
 import Clinios from "../../../../assets/img/Clinios.png";
-import Help from "../../../../assets/img/help.png";
+import Help from "../../../../assets/img/Help.png";
 import Grid from "@material-ui/core/Grid";
 import AccordionSideBar from "./components/Accordion/Accordion";
 
@@ -89,7 +89,7 @@ const Sidebar = (props) => {
 
           </div>
           <div>
-            <RouterLink to="/client/consult" target="_blank" className={classes.titleAsLogo}>
+            <RouterLink to="/client/consult" className={classes.titleAsLogo}>
               <img src={Help} alt="Help ad" className={classes.Logo} />
             </RouterLink>
 

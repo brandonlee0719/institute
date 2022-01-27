@@ -6,8 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
 import ReactPlayer from "react-player";
 
-import Clinios from "../../../assets/img/Clinios.png";
-import Help from "../../../assets/img/help.png";
+
 import useAuth from "../../../hooks/useAuth";
 import { statusToColorCode, isEmpty } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
