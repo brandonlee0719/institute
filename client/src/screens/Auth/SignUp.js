@@ -53,12 +53,13 @@ const SignUp = () => {
   const handleFormSubmit = (data) => {
     AuthService.register(data).then(
       async (response) => {
+
         if (response.data) {
-          const userData = response.data.data.user;
+          const userData = response.data;
           setSignedUpUser(userData);
           await login(data.user.email.trim(), data.user.password.trim());
         }
-        enqueueSnackbar(`${response.data.message}`, {
+        enqueueSnackbar(`User registered successfully.`, {
           variant: "success",
         });
       },

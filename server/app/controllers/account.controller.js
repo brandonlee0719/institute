@@ -74,10 +74,11 @@ const deleteAccountUser = async (req, res) => {
     // const pgClient = await db.getClient();
     //await pgClient.query('BEGIN')
 
+    const { id } = req.params;
     try {
 
-        await db.query(`delete from client_class where client_id = ${req.params.id}`);
-        await db.query(`delete from client where id = ${req.params.id}`);
+        await db.query(`DELETE FROM client_class WHERE client_id = ${id} `);
+        await db.query(`DELETE FROM client WHERE id = ${id} `);
 
         const successMessage = "User Deleted Successfully";
 

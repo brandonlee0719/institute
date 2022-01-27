@@ -210,6 +210,10 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
     setModalOpen(true);
   };
 
+  const handleModalClose = () => {
+    setModalOpen(false)
+  };
+
   const modalTitle = "Terms of Service";
 
   const modalBody = `These Terms of Service reflects the way our business works, the laws that apply to our company, and certain things we've always 
@@ -229,7 +233,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
 
       {
         modalOpen ?
-          <CommonModal title={modalTitle} body={modalBody} isModalOpen={true} />
+          <CommonModal title={modalTitle} body={modalBody} isModalOpen={true} isModalClose={handleModalClose} />
           : null
       }
 
