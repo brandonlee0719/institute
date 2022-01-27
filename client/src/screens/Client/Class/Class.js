@@ -214,9 +214,12 @@ export default function Class() {
                                     />
                                 </Grid>
                                 :
-                                <Grid item md={8} xs={8} >
-                                    <SampleDocViewer filePath={classData.url} />
-                                </Grid>
+                                classData.type === 'P' ?
+                                    <Grid item md={8} xs={8} >
+                                        <SampleDocViewer filePath={classData.url} />
+                                    </Grid>
+                                    :
+                                    null
                         }
 
                         <Grid item md={4} xs={4} >

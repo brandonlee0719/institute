@@ -12,7 +12,7 @@ const { errorMessage, successMessage, status } = require("../helpers/status");
  */
 exports.signin = async (req, res) => {
 
-  const response = await db.query(` select id, password from client where email = '${req.body.email}'`);
+  const response = await db.query(`select id, password from client where email = $1`, [req.body.email]);
 
   const user = response.rows[0];
 
@@ -31,7 +31,7 @@ exports.signin = async (req, res) => {
   }
 
   // update user login_dt
-  await db.query(`UPDATE client SET login_dt=now() WHERE id =${user.id}`);
+  await db.query(`UPDATE client SET login_dt=now() WHERE id=$1`, [user.id]);
 
   const token = jwt.sign(
     { id: user.id, role: "CLIENT" },

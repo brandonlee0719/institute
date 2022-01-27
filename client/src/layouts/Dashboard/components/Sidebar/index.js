@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link, NavLink as RouterLink, useHistory } from "react-router-dom";
 import { Drawer } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -79,10 +79,20 @@ const Sidebar = (props) => {
       >
         <div className={classes.root}>
           <div>
-            <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
+
+            <a
+              target="_blank"
+              className={classes.link}
+              href="https://www.avonehr.com">
+              <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
+            </a>
+
           </div>
           <div>
-            <img src={Help} alt="Help ad" className={classes.Logo} />
+            <RouterLink to="/client/consult" target="_blank" className={classes.titleAsLogo}>
+              <img src={Help} alt="Help ad" className={classes.Logo} />
+            </RouterLink>
+
           </div>
         </div>
       </Drawer>

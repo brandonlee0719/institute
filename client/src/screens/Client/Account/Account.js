@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-
-
-
+import { NavLink as RouterLink, useHistory, useLocation } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
@@ -57,6 +55,7 @@ export default function Account() {
     const classes = useStyles();
     const { enqueueSnackbar } = useSnackbar();
     const { user, logout } = useAuth();
+    const history = useHistory();
 
     const [selectedProvider, setSelectedProvider] = useState({});
     const [dropDownVal, setDropDownVal] = useState("");
@@ -136,8 +135,7 @@ export default function Account() {
             });
 
             await logout();
-
-            history.push(user.login_url || "/login_client");
+            history.push("/login_client");
 
         } catch (error) {
             setErrors(error.response.data.message);

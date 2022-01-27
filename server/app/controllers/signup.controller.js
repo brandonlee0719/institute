@@ -100,7 +100,7 @@ exports.signup = async (req, res) => {
       };
 
       await pgClient.query('COMMIT')
-      res.status(status.created).send(successMessage);
+      res.status(status.created).send(responseData);
     }
   } catch (err) {
     // handle the error
