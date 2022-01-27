@@ -9,7 +9,7 @@ import useAuth from "../../../../hooks/useAuth";
 import { client_pages } from "../../../../static/nav-pages";
 
 import Clinios from "../../../../assets/img/Clinios.png";
-import Help from "../../../../assets/img/Help.png";
+import Help from "../../../../assets/img/help.png";
 import Grid from "@material-ui/core/Grid";
 import AccordionSideBar from "./components/Accordion/Accordion";
 
