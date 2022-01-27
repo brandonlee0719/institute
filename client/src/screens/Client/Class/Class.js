@@ -55,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
     highlightValue: {
         color: "gray",
         fontWeight: "400",
-        fontSize: "small"
+        fontSize: "small",
+        whiteSpace: "pre-line"
     },
     highlighTitle: {
         color: "black",
@@ -149,6 +150,9 @@ export default function Class() {
         history.push(`/client/class/${nextId}`);
     };
 
+    const url =
+        "http://www.pdf995.com/samples/pdf.pdf"
+
     useEffect(() => {
 
         setClassId(id);
@@ -156,7 +160,7 @@ export default function Class() {
         ClassService.getClass(id).then(
             (response) => {
                 if (response) {
-
+                    console.log(response[0]);
                     setCompleted(response[0].completion_dt === null ? false : true)
                     setClassData(response[0]);
                 }
@@ -169,7 +173,7 @@ export default function Class() {
         );
     }, [])
 
-    const highlightsVal = classData.length === 0 ? '' : parse(classData.highlight);
+    const highlightsVal = classData.length === 0 ? '' : classData.highlight === null ? '' : parse(classData.highlight);
 
     return (
         <div className={classes.root}>
@@ -199,7 +203,13 @@ export default function Class() {
                                 :
                                 classData.type === 'P' ?
                                     <Grid item md={8} xs={8} >
-                                        <SampleDocViewer filePath={classData.url} />
+                                        {/* <SampleDocViewer filePath={classData.url} /> */}
+                                        <Document
+                                            file={classData.url}
+                                            onLoadSuccess={onDocumentLoadSuccess}
+                                        >
+                                            <Page pageNumber={pageNumber} />
+                                        </Document>
                                     </Grid>
                                     :
                                     null
