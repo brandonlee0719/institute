@@ -8,8 +8,8 @@ import PropTypes from "prop-types";
 import useAuth from "../../../../hooks/useAuth";
 import { client_pages } from "../../../../static/nav-pages";
 
-import Clinios from "../../../../assets/img/Clinios.png";
-import Help from "../../../../assets/img/help.png";
+import Ad1 from "../../../../assets/img/ad1.png";
+import Ad2 from "../../../../assets/img/ad2.png";
 import Grid from "@material-ui/core/Grid";
 import AccordionSideBar from "./components/Accordion/Accordion";
 
@@ -84,13 +84,13 @@ const Sidebar = (props) => {
               target="_blank"
               className={classes.link}
               href="https://www.avonehr.com">
-              <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
+              <img src={Ad1} alt="Clinos software ad" className={classes.Logo} />
             </a>
 
           </div>
           <div>
-            <RouterLink to="/client/consult" target="_blank" className={classes.titleAsLogo}>
-              <img src={Help} alt="Help ad" className={classes.Logo} />
+            <RouterLink to="/client/consult" className={classes.titleAsLogo}>
+              <img src={Ad2} alt="Help ad" className={classes.Logo} />
             </RouterLink>
 
           </div>

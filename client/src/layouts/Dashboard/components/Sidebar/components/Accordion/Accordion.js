@@ -102,8 +102,15 @@ const AccordionSideBar = () => {
       e.classesFinished = classesFinished.length;
       e.class = matchedClass;
 
+    });
+
+    const sortedModuleData = data.sort((a, b) => a.sort - b.sort);
+    const classSort = sortedModuleData.map(curr => {
+      curr.class = curr.class.sort((item1, item2) => item1.sort - item2.sort);
+      return curr;
     })
-    setAccordianMenuDetails(data);
+
+    setAccordianMenuDetails(classSort);
     setAccordionClassData(classData);
 
   }
@@ -116,7 +123,7 @@ const AccordionSideBar = () => {
   return (
     accordianMenuDetails.map((item, index) => (
       <div key={index} className={classes.root}>
-        <Accordion >
+        <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls={index}

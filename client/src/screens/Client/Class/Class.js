@@ -1,30 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink as RouterLink, useHistory, useLocation } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
 import ReactPlayer from "react-player";
-
-import Clinios from "../../../assets/img/Clinios.png";
-import Help from "../../../assets/img/help.png";
 import useAuth from "../../../hooks/useAuth";
-import { statusToColorCode, isEmpty, dateTimeFormat } from "../../../utils/helpers";
-import { TextField, Button } from '@material-ui/core';
-import Select from "@material-ui/core/Select";
+import { isEmpty, dateTimeFormat } from "../../../utils/helpers";
+import { Button } from '@material-ui/core';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import SaveIcon from '@material-ui/icons/Save';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AccountService from "../../../services/account.service";
 import ClassService from "../../../services/class.service";
-import Alert from "../../../components/Alert";
-
-import Pagination from "@material-ui/lab/Pagination";
 import parse from 'html-react-parser';
-import FileViewer from "react-file-viewer";
 import { pdfjs, Document, Page } from "react-pdf";
 import SampleDocViewer from "../../../components/common/SampleDocViewer";
 
@@ -68,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
     highlightValue: {
         color: "gray",
         fontWeight: "400",
-        fontSize: "small"
+        fontSize: "small",
+        whiteSpace: "pre-line"
     },
     highlighTitle: {
         color: "black",
@@ -162,6 +150,9 @@ export default function Class() {
         history.push(`/client/class/${nextId}`);
     };
 
+    const url =
+        "http://www.pdf995.com/samples/pdf.pdf"
+
     useEffect(() => {
 
         setClassId(id);
@@ -169,7 +160,7 @@ export default function Class() {
         ClassService.getClass(id).then(
             (response) => {
                 if (response) {
-
+                    console.log(response[0]);
                     setCompleted(response[0].completion_dt === null ? false : true)
                     setClassData(response[0]);
                 }
@@ -182,11 +173,7 @@ export default function Class() {
         );
     }, [])
 
-    const highlightsVal = classData.length === 0 ? '' : parse(classData.highlight);
-
-    const file = 'https://www.diagnosticsolutionslab.com/sites/default/files/u16/GI-MAP-Interpretive-Guide.pdf'
-    const fileType = 'pdf'
-
+    const highlightsVal = classData.length === 0 ? '' : classData.highlight === null ? '' : parse(classData.highlight);
 
     return (
         <div className={classes.root}>
@@ -216,7 +203,13 @@ export default function Class() {
                                 :
                                 classData.type === 'P' ?
                                     <Grid item md={8} xs={8} >
-                                        <SampleDocViewer filePath={classData.url} />
+                                        {/* <SampleDocViewer filePath={classData.url} /> */}
+                                        <Document
+                                            file={classData.url}
+                                            onLoadSuccess={onDocumentLoadSuccess}
+                                        >
+                                            <Page pageNumber={pageNumber} />
+                                        </Document>
                                     </Grid>
                                     :
                                     null

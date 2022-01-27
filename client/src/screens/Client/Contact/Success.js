@@ -1,21 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
-
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
-import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
-import { useSnackbar } from "notistack";
-import ReactPlayer from "react-player";
-
-import Clinios from "../../../assets/img/Clinios.png";
-import Help from "../../../assets/img/help.png";
-import useAuth from "../../../hooks/useAuth";
-import { statusToColorCode, isEmpty } from "../../../utils/helpers";
-import { TextField, Button } from '@material-ui/core';
-import SaveIcon from '@material-ui/icons/Save';
-import EmailService from "../../../services/email.service";
-import AccountService from "../../../services/account.service";
 
 
 // components
@@ -24,6 +10,7 @@ import AccountService from "../../../services/account.service";
 const useStyles = makeStyles((theme) => ({
     pageTitle: {
         marginBottom: theme.spacing(2),
+        color: "#808080"
     },
     root: {
         flexGrow: 1,
@@ -104,14 +91,7 @@ export default function Success(props) {
 
                 </Grid>
 
-                <Grid item md={3} xs={3}>
-                    <Grid item md={6} xs={12}>
-                        <img src={Clinios} alt="Clinos software ad" className={classes.Logo} />
-                    </Grid>
-                    <Grid item md={6} xs={12}>
-                        <img src={Help} alt="Help ad" className={classes.Logo} />
-                    </Grid>
-                </Grid>
+
             </Grid>
 
         </div>

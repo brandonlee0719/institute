@@ -1,17 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
-import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from "notistack";
-import ReactPlayer from "react-player";
-
-import Clinios from "../../../assets/img/Clinios.png";
-import Help from "../../../assets/img/help.png";
 import useAuth from "../../../hooks/useAuth";
-import { statusToColorCode, isEmpty } from "../../../utils/helpers";
+import { isEmpty } from "../../../utils/helpers";
 import { TextField, Button } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import EmailService from "../../../services/email.service";

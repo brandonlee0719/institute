@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-
-import { Button } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
 import Alert from "@material-ui/lab/Alert";
-import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
 
 import Dimmer from "../../../components/common/Dimmer";
@@ -24,25 +21,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Success = ({ user }) => {
   const classes = useStyles();
-  const { enqueueSnackbar } = useSnackbar();
   const [errors, setErrors] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const sendResendEmailRequest = () => {
-  //   setIsLoading(true);
-  //   EmailService.resendEmailVerification(user).then(
-  //     (response) => {
-  //       setErrors(response.data);
-  //       enqueueSnackbar(response.data.message, {
-  //         variant: "success",
-  //       });
-  //       setIsLoading(false);
-  //     },
-  //     (error) => {
-  //       setErrors(error.response);
-  //     },
-  //   );
-  // };
 
   return (
     <Card className={classes.root} variant="outlined">
