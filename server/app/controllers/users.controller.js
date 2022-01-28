@@ -9,7 +9,10 @@ const { errorMessage, successMessage, status } = require("../helpers/status");
 const getUser = async (req, res) => {
     const { id } = req.params;
 
-    const response = await db.query(` select id, password from client where id = '${id}'`);
+    const response = await db.query(`/*login2*/ select id, password
+        from client 
+        where id = '${id}'
+        `);
 
     const user = response.rows[0];
 
