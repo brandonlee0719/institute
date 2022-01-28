@@ -34,7 +34,7 @@ exports.signin = async (req, res) => {
   }
 
   // update user login_dt
-  await db.query(`/*login*/ update client 
+  await db.query(`/*login update login_dt*/ update client 
     set login_dt = now() 
     where id = $1
     `, [user.id]);
