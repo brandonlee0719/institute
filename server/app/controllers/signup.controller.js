@@ -47,8 +47,8 @@ exports.fieldValiate = async (req, res) => {
  * @returns {object} response
  */
 exports.signup = async (req, res) => {
-  const pgClient = await db.getClient();
-  await pgClient.query('BEGIN')
+  // const pgClient = await db.getClient();
+  // await pgClient.query('BEGIN')
 
 
   const { user } = req.body;
@@ -66,7 +66,7 @@ exports.signup = async (req, res) => {
   // `SELECT id, ${req.body.fieldName} FROM ${tableName} WHERE ${req.body.fieldName} = $1`,
   //     [req.body.value]
   //   );
-  const existingEmailRows = await pgClient.query(
+  const existingEmailRows = await db.query(
     `SELECT id FROM client WHERE email=$1`,
     [req.body.email]
   );
@@ -84,7 +84,7 @@ exports.signup = async (req, res) => {
 
   try {
 
-    const clientResponse = await pgClient.query(`INSERT INTO client(firstname, lastname, license, email, password, ip_address, reset_password_token, reset_password_expires, login_dt, unsubscribe_dt, created) 
+    const clientResponse = await db.query(`INSERT INTO client(firstname, lastname, license, email, password, ip_address, reset_password_token, reset_password_expires, login_dt, unsubscribe_dt, created) 
     VALUES ('${user.firstname}', '${user.lastname}', '${user.license}', '${user.email}', '${user.password}', '${user.ipAddress}', null, null, now(), null, now()) RETURNING id`);
 
     if (!clientResponse.rowCount) {
@@ -99,16 +99,16 @@ exports.signup = async (req, res) => {
         client: clientResponse.rows[0],
       };
 
-      await pgClient.query('COMMIT')
+      //await pgClient.query('COMMIT')
       res.status(status.created).send(responseData);
     }
   } catch (err) {
     // handle the error
-    await pgClient.query('ROLLBACK')
+    // await pgClient.query('ROLLBACK')
     console.log('err:', err)
     errorMessage.message = err.message;
     res.status(status.error).send(errorMessage);
   } finally {
-    pgClient.release()
+    // pgClient.release()
   }
 };
