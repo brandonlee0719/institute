@@ -118,7 +118,7 @@ const AccordionSideBar = () => {
 
   useEffect(() => {
     fetchAccordianMenu();
-  }, [loc.pathname.split('/')[3]]);
+  }, []);
 
   return (
     accordianMenuDetails.map((item, index) => (

@@ -48,25 +48,34 @@ export default function Search() {
     const [search, setSearch] = useState('');
     const [searchData, setSearchData] = useState([]);
 
-    const [noDataFound, setNoDataFount] = useState('No data to show');
+    const [noDataFound, setNoDataFound] = useState('');
 
 
     const handleTextChange = (e) => {
         setSearch(e.target.value);
     };
 
-    const handleSearch = async () => {
+    const handleSearch = async (event) => {
+
+        event.preventDefault();
         try {
             const data = {
                 term: search
             }
-            const searchResp = await SearchService.searchModule(data);
 
-            if (searchResp !== '') {
-                setSearchData(searchResp);
+            if (search !== '') {
+                const searchResp = await SearchService.searchModule(data);
+
+                if (searchResp !== '') {
+                    setNoDataFound('');
+                    setSearchData(searchResp);
+                } else {
+                    setNoDataFound('No data found');
+                }
             } else {
-                setNoDataFount('No data found');
+                setSearchData([]);
             }
+
 
         } catch (error) {
             console.log(error);
@@ -79,71 +88,74 @@ export default function Search() {
 
     return (
         <div className={classes.root}>
-            <Grid container >
-                <Grid item md={7} xs={7} className={classes.headerWrap}>
-                    <Typography component="h1" variant="h2" color="textPrimary" className={classes.pageTitle}>
-                        Search
-                        {" "}
-                        {!isEmpty(selectedProvider) && `- ${selectedProvider?.name}`}
-                    </Typography>
-                </Grid>
-            </Grid>
-
-
-            <Grid container spacing={1}>
-                <Grid item md={9} xs={9}>
-                    <Grid container spacing={2}>
-                        <Grid item md={5} xs={5} >
-                            <TextField
-                                id="search"
-                                label="search"
-                                variant="outlined"
-                                fullWidth
-                                name="search"
-                                value={search}
-                                onChange={handleTextChange}
-                            />
-                        </Grid>
-
-
+            <form>
+                <Grid container >
+                    <Grid item md={7} xs={7} className={classes.headerWrap}>
+                        <Typography component="h1" variant="h2" color="textPrimary" className={classes.pageTitle}>
+                            Search
+                            {" "}
+                            {!isEmpty(selectedProvider) && `- ${selectedProvider?.name}`}
+                        </Typography>
                     </Grid>
-
-                    <Grid container spacing={2}>
-                        <Grid item md={12} xs={12}>
-                            <Button
-                                style={{ backgroundColor: '#2979ff', marginTop: '20px' }}
-                                variant="contained"
-                                color="secondary"
-                                onClick={handleSearch}
-                            >
-                                Search
-                            </Button>
-                        </Grid>
-
-                    </Grid>
-
-                    {
-                        searchData.length !== 0 ?
-                            <Grid container spacing={1} style={{ paddingTop: '15px' }}>
-                                <Grid item md={12} xs={12} >
-                                    <SearchTable
-                                        searchedData={searchData} />
-                                </Grid>
-                            </Grid>
-                            :
-                            <Grid container spacing={1} style={{ paddingTop: '15px' }}>
-                                <Grid item md={12} xs={12} className={classes.headerWrap}>
-
-                                    <h2>{noDataFound}</h2>
-
-                                </Grid>
-                            </Grid>
-                    }
                 </Grid>
 
-            </Grid>
+
+                <Grid container spacing={1}>
+                    <Grid item md={9} xs={9}>
+                        <Grid container spacing={2}>
+                            <Grid item md={5} xs={5} >
+                                <TextField
+                                    id="search"
+                                    label="search"
+                                    variant="outlined"
+                                    fullWidth
+                                    name="search"
+                                    value={search}
+                                    onChange={handleTextChange}
+                                    autoFocus
+                                />
+                            </Grid>
 
 
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item md={12} xs={12}>
+                                <Button
+                                    style={{ backgroundColor: '#2979ff', marginTop: '20px' }}
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={handleSearch}
+                                    type="submit"
+                                >
+                                    Search
+                                </Button>
+                            </Grid>
+
+                        </Grid>
+
+                        {
+                            searchData.length !== 0 ?
+                                <Grid container spacing={1} style={{ height: "60vh", paddingTop: '15px', overflow: 'auto' }}>
+                                    <Grid item md={12} xs={12} style={{ overflow: 'auto' }}>
+                                        <SearchTable
+                                            searchedData={searchData} />
+                                    </Grid>
+                                </Grid>
+                                :
+                                <Grid container spacing={1} style={{ paddingTop: '15px' }}>
+                                    <Grid item md={12} xs={12} className={classes.headerWrap}>
+
+                                        <p style={{ color: "gray" }}>{noDataFound}</p>
+
+                                    </Grid>
+                                </Grid>
+                        }
+                    </Grid>
+
+                </Grid>
+
+            </form>
         </div>
     );
 }

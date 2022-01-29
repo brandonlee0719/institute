@@ -178,24 +178,21 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
     })
       .then(
         (response) => {
-          // Remove errors record with param
-          const updatedErrors = fieldErrors.filter(
-            (error) => error.param !== response.data.message.param,
-          );
-          setFieldErrors(updatedErrors);
-        },
-        (error) => {
-          if (!error.response) {
-            // network error
-            console.error(error);
+          if (response.data.status === 'success') {
+            // Remove errors record with param
+            const updatedErrors = fieldErrors.filter(
+              (error) => error.param !== response.data.message.param,
+            );
+            setFieldErrors(updatedErrors);
           } else {
+            console.log("In else part")
             const uniqueFieldErrors = _.uniqWith(
-              [...fieldErrors, error.response.data.message],
+              [...fieldErrors, response.data.message],
               _.isEqual,
             );
             setFieldErrors(uniqueFieldErrors);
           }
-        },
+        }
       )
       .catch((err) => {
         console.error("catch err", err);
@@ -242,6 +239,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         variant="outlined"
         margin="dense"
         fullWidth
+        autoFocus
         id="firstName"
         label="Your Firstname"
         name="firstName"
@@ -292,15 +290,16 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
       </FormControl>
 
       <TextFieldWithError
-        id="userEmail"
         fieldName="email"
         label="Your Email Address"
         value={email}
         handleOnChange={(event) => setEmail(event.target.value)}
-        handleOnBlur={(event) => handleAjaxValidation(event, "users")}
-        errors={getFieldError("users", "email")}
+        handleOnBlur={(event) => handleAjaxValidation(event)}
+        errors={getFieldError("client", "email")}
         inputProps={{ maxLength: 255 }}
-        helperText={`${email.length >= 255 ? "Enter an email between 255 charecter" : ""
+        helperText={`${email.length >= 255
+          ? "Enter an email between 255 charecter"
+          : ""
           }`}
       />
 

@@ -151,6 +151,7 @@ export default function Contact() {
                                             value={subject}
                                             name="subject"
                                             onChange={handleTxtChange}
+                                            autoFocus
                                         />
                                     </Grid>
 

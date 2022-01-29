@@ -150,9 +150,6 @@ export default function Class() {
         history.push(`/client/class/${nextId}`);
     };
 
-    const url =
-        "http://www.pdf995.com/samples/pdf.pdf"
-
     useEffect(() => {
 
         setClassId(id);
@@ -160,7 +157,6 @@ export default function Class() {
         ClassService.getClass(id).then(
             (response) => {
                 if (response) {
-                    console.log(response[0]);
                     setCompleted(response[0].completion_dt === null ? false : true)
                     setClassData(response[0]);
                 }
@@ -173,7 +169,17 @@ export default function Class() {
         );
     }, [])
 
-    const highlightsVal = classData.length === 0 ? '' : classData.highlight === null ? '' : parse(classData.highlight);
+    let highlightsVal = '';
+    if (classData.length !== 0 && classData.highlight !== null) {
+        const temp = classData.highlight;
+        const firstPart = temp.indexOf("/*");
+        const secondPart = temp.indexOf("*/") + 2;
+
+        highlightsVal = temp.substr(0, firstPart) + temp.substr(secondPart);
+
+    }
+    //const highlightsVal = classData.length === 0 ? '' : classData.highlight === null ? '' : parse(classData.highlight);
+
 
     return (
         <div className={classes.root}>
@@ -233,7 +239,7 @@ export default function Class() {
                                 />
                             </Grid>
                             <Grid item md={12} xs={12}>
-                                <label style={{ fontSize: "14px" }}>Completion Date: {classData.completion_dt === null ? '-' : dateTimeFormat(classData.completion_dt)}</label>
+                                <label style={{ fontSize: "14px", color: "#37474f" }}>Completion Date: {classData.completion_dt === null ? '-' : dateTimeFormat(classData.completion_dt)}</label>
                             </Grid>
 
                             <Grid item md={12} xs={12}>
@@ -259,11 +265,11 @@ export default function Class() {
 
                     </Grid>
 
-                    <Grid container spacing={1} style={{ marginTop: "30px" }}>
+                    <Grid container spacing={1} style={{ marginTop: "30px", overflow: "auto" }}>
                         <Grid item md={12} xs={12} >
                             <Typography className={classes.highlighTitle}> Highlights</Typography>
                         </Grid>
-                        <Grid item md={12} xs={12}>
+                        <Grid item md={12} xs={12} style={{ overflow: "auto", height: "20vh" }}>
                             <p className={classes.highlightValue}> {highlightsVal}</p>
                         </Grid>
                     </Grid>

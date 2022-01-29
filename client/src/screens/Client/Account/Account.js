@@ -93,7 +93,9 @@ export default function Account() {
         setDropDownVal(event);
     };
 
-    const handleUpdateAccount = async () => {
+    const handleUpdateAccount = async (event) => {
+
+        event.preventDefault();
         try {
 
             const data = {
@@ -181,153 +183,156 @@ export default function Account() {
 
     return (
         <div className={classes.root}>
-            <Grid container >
-                <Grid item md={7} xs={12} className={classes.headerWrap}>
-                    <Typography component="h1" variant="h2" color="textPrimary" className={classes.pageTitle}>
-                        Account
-                        {" "}
-                        {!isEmpty(selectedProvider) && `- ${selectedProvider?.name}`}
-                    </Typography>
+            <form>
+                <Grid container >
+                    <Grid item md={7} xs={12} className={classes.headerWrap}>
+                        <Typography component="h1" variant="h2" color="textPrimary" className={classes.pageTitle}>
+                            Account
+                            {" "}
+                            {!isEmpty(selectedProvider) && `- ${selectedProvider?.name}`}
+                        </Typography>
+                    </Grid>
                 </Grid>
-            </Grid>
 
-            {
-                isDeleteUser ?
-                    <Alert
-                        open={isDeleteUser}
-                        title="Are you certain you want to delete your account and delete all your data?"
-                        message={deleteMessage}
-                        applyButtonText="Delete"
-                        cancelButtonText="Cancel"
-                        applyForm={handleDeleteAccount}
-                        cancelForm={() => { handleDeleteModal(false) }}
-                    />
-                    : null
-            }
+                {
+                    isDeleteUser ?
+                        <Alert
+                            open={isDeleteUser}
+                            title="Are you certain you want to delete your account and delete all your data?"
+                            message={deleteMessage}
+                            applyButtonText="Delete"
+                            cancelButtonText="Cancel"
+                            applyForm={handleDeleteAccount}
+                            cancelForm={() => { handleDeleteModal(false) }}
+                        />
+                        : null
+                }
 
-            <Grid container spacing={1}>
-                <Grid item md={9} xs={9}>
-                    <Grid container spacing={2}>
-                        <Grid item md={5} xs={5} >
-                            <TextField
-                                id="first_name"
-                                label="First Name"
-                                variant="outlined"
-                                fullWidth
-                                name="firstName"
-                                value={firstName}
-                                onChange={handleTextChange}
-                            />
+                <Grid container spacing={1}>
+                    <Grid item md={9} xs={9}>
+                        <Grid container spacing={2}>
+                            <Grid item md={5} xs={5} >
+                                <TextField
+                                    id="first_name"
+                                    label="First Name"
+                                    variant="outlined"
+                                    fullWidth
+                                    name="firstName"
+                                    value={firstName}
+                                    onChange={handleTextChange}
+                                    autoFocus
+                                />
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid container spacing={2}>
-                        <Grid item md={5} xs={5} >
-                            <TextField
-                                id="last_name"
-                                label="Last Name"
-                                variant="outlined"
-                                fullWidth
-                                value={lastName}
-                                name="lastName"
-                                onChange={handleTextChange}
-                            />
+                        <Grid container spacing={2}>
+                            <Grid item md={5} xs={5} >
+                                <TextField
+                                    id="last_name"
+                                    label="Last Name"
+                                    variant="outlined"
+                                    fullWidth
+                                    value={lastName}
+                                    name="lastName"
+                                    onChange={handleTextChange}
+                                />
+                            </Grid>
                         </Grid>
-                    </Grid>
 
-                    <Grid container spacing={2}>
+                        <Grid container spacing={2}>
 
-                        <Grid item md={5} xs={5} >
+                            <Grid item md={5} xs={5} >
 
-                            <FormControl variant="outlined" className={classes.formControl}>
-                                <InputLabel id="demo-simple-select-outlined-label">License</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-outlined-label"
-                                    id="demo-simple-select-outlined"
-                                    value={dropDownVal}
-                                    onChange={handleDropDown}
-                                    label="License"
+                                <FormControl variant="outlined" className={classes.formControl}>
+                                    <InputLabel id="demo-simple-select-outlined-label">License</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-outlined-label"
+                                        id="demo-simple-select-outlined"
+                                        value={dropDownVal}
+                                        onChange={handleDropDown}
+                                        label="License"
+                                    >
+                                        {options.length
+                                            ? options.map((option) => (
+                                                <MenuItem key={option.value} value={option.value}>
+                                                    {option.label}
+                                                </MenuItem>
+                                            ))
+                                            : (
+                                                <MenuItem value="">
+                                                    No Items available
+                                                </MenuItem>
+                                            )}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item md={5} xs={5} >
+                                <TextField
+                                    id="email_address"
+                                    label="Email address"
+                                    variant="outlined"
+                                    fullWidth
+                                    value={email}
+                                    name="email"
+                                    onChange={handleTextChange}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+
+                            <Grid item md={5} xs={5} >
+                                <TextField
+                                    id="password"
+                                    type="password"
+                                    label="Password"
+                                    variant="outlined"
+                                    fullWidth
+                                    value={password}
+                                    name="password"
+                                    onChange={handleTextChange}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item md={12} xs={12}>
+                                <Button
+                                    style={{ backgroundColor: '#2979ff', marginTop: '20px' }}
+                                    variant="contained"
+                                    color="secondary"
+                                    startIcon={<SaveIcon />}
+                                    onClick={handleUpdateAccount}
+                                    type="submit"
                                 >
-                                    {options.length
-                                        ? options.map((option) => (
-                                            <MenuItem key={option.value} value={option.value}>
-                                                {option.label}
-                                            </MenuItem>
-                                        ))
-                                        : (
-                                            <MenuItem value="">
-                                                No Items available
-                                            </MenuItem>
-                                        )}
-                                </Select>
-                            </FormControl>
-                        </Grid>
+                                    Save
+                                </Button>
+                            </Grid>
 
-                    </Grid>
-
-                    <Grid container spacing={2}>
-                        <Grid item md={5} xs={5} >
-                            <TextField
-                                id="email_address"
-                                label="Email address"
-                                variant="outlined"
-                                fullWidth
-                                value={email}
-                                name="email"
-                                onChange={handleTextChange}
-                            />
-                        </Grid>
-                    </Grid>
-
-                    <Grid container spacing={2}>
-
-                        <Grid item md={5} xs={5} >
-                            <TextField
-                                id="password"
-                                type="password"
-                                label="Password"
-                                variant="outlined"
-                                fullWidth
-                                value={password}
-                                name="password"
-                                onChange={handleTextChange}
-                            />
-                        </Grid>
-                    </Grid>
-
-                    <Grid container spacing={2}>
-                        <Grid item md={12} xs={12}>
-                            <Button
-                                style={{ backgroundColor: '#2979ff', marginTop: '20px' }}
-                                variant="contained"
-                                color="secondary"
-                                startIcon={<SaveIcon />}
-                                onClick={handleUpdateAccount}
-                            >
-                                Save
-                            </Button>
                         </Grid>
 
                     </Grid>
 
                 </Grid>
 
-            </Grid>
-
-            <Grid container style={{ marginTop: "10em" }}>
-                <Typography>Delete my information and delete my account</Typography>
-                <Grid item md={12} xs={12}>
-                    <Button
-                        style={{ backgroundColor: '#FFA500', marginTop: '5px' }}
-                        variant="contained"
-                        color="secondary"
-                        startIcon={<DeleteIcon />}
-                        onClick={() => { handleDeleteModal(true) }}
-                    >
-                        Delete
-                    </Button>
+                <Grid container style={{ marginTop: "10em" }}>
+                    <Typography>Delete my information and delete my account</Typography>
+                    <Grid item md={12} xs={12}>
+                        <Button
+                            style={{ backgroundColor: '#FFA500', marginTop: '5px' }}
+                            variant="contained"
+                            color="secondary"
+                            startIcon={<DeleteIcon />}
+                            onClick={() => { handleDeleteModal(true) }}
+                        >
+                            Delete
+                        </Button>
+                    </Grid>
                 </Grid>
-            </Grid>
-
+            </form>
         </div>
     );
 }
