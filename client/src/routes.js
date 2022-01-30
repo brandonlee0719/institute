@@ -120,6 +120,13 @@ const routes = [
     component: lazy(() => import("./screens/ForgetPassword")),
   },
   {
+    exact: true,
+    guard: GuestGuard,
+    layout: MainLayout,
+    path: "/password/reset/:userId/:token",
+    component: lazy(() => import("./screens/ResetPassword")),
+  },
+  {
     path: "/avonEHR",
     component: () => {
       window.location.href = 'www.avonehr.com';

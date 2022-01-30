@@ -14,6 +14,9 @@ import ClassService from "../../../services/class.service";
 import parse from 'html-react-parser';
 import { pdfjs, Document, Page } from "react-pdf";
 import SampleDocViewer from "../../../components/common/SampleDocViewer";
+import pdfFile from "../../../assets/docs/sample.pdf";
+import GI_MAP from "../../../assets/docs/GI-MAP-Interpretive-Guide.pdf";
+import PDFComponent from "./Pdf-Render";
 
 
 pdfjs
@@ -78,8 +81,7 @@ export default function Class() {
     const [classData, setClassData] = useState([]);
     const [classId, setClassId] = useState();
     const [clientId, setClientId] = useState();
-    const [totalPages, setTotalPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
+
 
     const loc = useLocation();
 
@@ -126,19 +128,6 @@ export default function Class() {
         }
     };
 
-    const onDocumentLoadSuccess = ({ numPages }) => {
-        setTotalPages(numPages);
-        setPageNumber(1);
-    };
-
-    const handleChange = (event, value) => {
-        setPageNumber(value);
-    };
-
-    const onError = (e) => {
-        enqueueSnackbar(e, { variant: "error" });
-        console.error("onError", e);
-    };
 
     const handlePrevious = () => {
         const prevId = parseInt(classId) - 1;
@@ -175,11 +164,9 @@ export default function Class() {
         const firstPart = temp.indexOf("/*");
         const secondPart = temp.indexOf("*/") + 2;
 
-        highlightsVal = temp.substr(0, firstPart) + temp.substr(secondPart);
+        highlightsVal = temp; //temp.substr(0, firstPart) + temp.substr(secondPart);
 
     }
-    //const highlightsVal = classData.length === 0 ? '' : classData.highlight === null ? '' : parse(classData.highlight);
-
 
     return (
         <div className={classes.root}>
@@ -208,20 +195,14 @@ export default function Class() {
                                 </Grid>
                                 :
                                 classData.type === 'P' ?
-                                    <Grid item md={8} xs={8} >
-                                        {/* <SampleDocViewer filePath={classData.url} /> */}
-                                        <Document
-                                            file={classData.url}
-                                            onLoadSuccess={onDocumentLoadSuccess}
-                                        >
-                                            <Page pageNumber={pageNumber} />
-                                        </Document>
+                                    <Grid item md={9} xs={9} style={{ overflow: "auto", height: "75vh" }}>
+                                        <PDFComponent pdfFilePath={GI_MAP} />
                                     </Grid>
                                     :
                                     null
                         }
 
-                        <Grid item md={4} xs={4} >
+                        <Grid item md={3} xs={3} >
                             <Grid item md={12} xs={12} >
                                 <FormControlLabel
                                     label="Completed: "
@@ -265,14 +246,26 @@ export default function Class() {
 
                     </Grid>
 
-                    <Grid container spacing={1} style={{ marginTop: "30px", overflow: "auto" }}>
-                        <Grid item md={12} xs={12} >
-                            <Typography className={classes.highlighTitle}> Highlights</Typography>
-                        </Grid>
-                        <Grid item md={12} xs={12} style={{ overflow: "auto", height: "20vh" }}>
-                            <p className={classes.highlightValue}> {highlightsVal}</p>
-                        </Grid>
-                    </Grid>
+                    {
+                        classData.type === 'V' ?
+                            <Grid container spacing={1} style={{ marginTop: "30px", overflow: "auto", height: '31vh' }}>
+                                <Grid item md={12} xs={12} >
+                                    <Typography className={classes.highlighTitle}> Highlights</Typography>
+                                </Grid>
+                                <Grid item md={12} xs={12} style={{ overflow: "auto", height: "20vh" }}>
+
+                                    <Typography
+                                        className={classes.highlightValue}
+
+                                        dangerouslySetInnerHTML={{ __html: `${highlightsVal}` }}>
+
+                                    </Typography>
+
+                                </Grid>
+                            </Grid>
+                            : null
+                    }
+
                 </Grid>
 
 
