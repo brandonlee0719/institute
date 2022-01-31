@@ -81,7 +81,7 @@ export default function Class() {
     const [classData, setClassData] = useState([]);
     const [classId, setClassId] = useState();
     const [clientId, setClientId] = useState();
-
+    const [pdfVal, setPDFVal] = useState('');
 
     const loc = useLocation();
 
@@ -146,6 +146,9 @@ export default function Class() {
         ClassService.getClass(id).then(
             (response) => {
                 if (response) {
+                    const fileName = response[0].url.split('/').pop();
+
+                    setPDFVal(fileName);
                     setCompleted(response[0].completion_dt === null ? false : true)
                     setClassData(response[0]);
                 }
@@ -195,14 +198,14 @@ export default function Class() {
                                 </Grid>
                                 :
                                 classData.type === 'P' ?
-                                    <Grid item md={9} xs={9} style={{ overflow: "auto", height: "75vh" }}>
-                                        <PDFComponent pdfFilePath={GI_MAP} />
+                                    <Grid item md={8} xs={8} style={{ overflow: "auto", height: "75vh" }}>
+                                        <PDFComponent pdfFileName={pdfVal} />
                                     </Grid>
                                     :
                                     null
                         }
 
-                        <Grid item md={3} xs={3} >
+                        <Grid item md={3} xs={3} style={{ marginLeft: "20px" }}>
                             <Grid item md={12} xs={12} >
                                 <FormControlLabel
                                     label="Completed: "
@@ -219,6 +222,7 @@ export default function Class() {
                                     }
                                 />
                             </Grid>
+
                             <Grid item md={12} xs={12}>
                                 <label style={{ fontSize: "14px", color: "#37474f" }}>Completion Date: {classData.completion_dt === null ? '-' : dateTimeFormat(classData.completion_dt)}</label>
                             </Grid>
@@ -248,11 +252,11 @@ export default function Class() {
 
                     {
                         classData.type === 'V' ?
-                            <Grid container spacing={1} style={{ marginTop: "30px", overflow: "auto", height: '31vh' }}>
+                            <Grid container spacing={1} style={{ marginTop: "15px", overflow: "auto", height: '31vh' }}>
                                 <Grid item md={12} xs={12} >
                                     <Typography className={classes.highlighTitle}> Highlights</Typography>
                                 </Grid>
-                                <Grid item md={12} xs={12} style={{ overflow: "auto", height: "20vh" }}>
+                                <Grid item md={12} xs={12} style={{ overflow: "auto" }}>
 
                                     <Typography
                                         className={classes.highlightValue}

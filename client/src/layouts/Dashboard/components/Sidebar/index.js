@@ -78,7 +78,7 @@ const Sidebar = (props) => {
         variant='persistent'
       >
         <div className={classes.root}>
-          <div>
+          <div container>
 
             <a
               target="_blank"
@@ -88,7 +88,7 @@ const Sidebar = (props) => {
             </a>
 
           </div>
-          <div>
+          <div container>
             <RouterLink to="/client/consult" className={classes.titleAsLogo}>
               <img src={Ad2} alt="Help ad" className={classes.Logo} />
             </RouterLink>
