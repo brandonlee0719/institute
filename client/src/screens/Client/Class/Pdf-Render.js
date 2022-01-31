@@ -4,8 +4,10 @@ import { Button } from '@material-ui/core';
 
 export default function PDFComponent(props) {
     const {
-        pdfFilePath
+        pdfFileName
     } = props;
+
+    const file = require(`../../../assets/docs/${pdfFileName}`).default;
     const [numPages, setNumPages] = useState();
     const [pageNumber, setPageNumber] = useState(1);
     const [renderNavButtons, setRenderNavButtons] = useState(false);
@@ -25,7 +27,7 @@ export default function PDFComponent(props) {
         <>
             <div>
                 <Document
-                    file={pdfFilePath}
+                    file={file}
                     onLoadSuccess={({ numPages }) => {
                         setNumPages(numPages);
                         setRenderNavButtons(true);
