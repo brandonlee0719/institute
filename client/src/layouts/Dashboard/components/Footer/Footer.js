@@ -7,7 +7,7 @@ import useAuth from "../../../../hooks/useAuth";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    flex: 0,
+    //flex: 0,
     backgroundColor: '#ffffff',
     color: "#ffffff",
     clear: "both",
@@ -25,20 +25,20 @@ const useStyles = makeStyles((theme) => ({
   footerText: {
     // marginLeft: "240px",
     color: "#AEAEAE",
-    marginTop: 0,
+    //marginTop: 0,
     //paddingTop: theme.spacing(1),
     // paddingBottom: theme.spacing(1),
     "& p": {
       color: "#AEAEAE",
     },
-    fontSize: "11px !important",
+    //fontSize: "11px !important",
   },
 }));
 
 const CustomTypography = withStyles(() => ({
   root: {
     fontSize: "11px",
-    lineHeight: "4px",
+    //lineHeight: "4px",
     letterSpacing: ".65px",
   },
 }))(Typography);
