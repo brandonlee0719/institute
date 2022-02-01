@@ -251,7 +251,7 @@ export default function Class() {
 
                     {
                         classData.type === 'V' ?
-                            <Grid container spacing={1} style={{ marginTop: "15px", overflow: "auto", height: '31vh' }}>
+                            <Grid container spacing={1} style={{ marginTop: "5px", overflow: "auto", height: '31vh' }}>
                                 <Grid item md={12} xs={12} >
                                     <Typography className={classes.highlighTitle}> Highlights</Typography>
                                 </Grid>
