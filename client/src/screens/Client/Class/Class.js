@@ -166,7 +166,8 @@ export default function Class() {
     if (classData.length !== 0 && classData.highlight !== null) {
         const temp = classData.highlight;
 
-        const test = temp.replace('\t', '&emsp;');
+
+        const test = temp.replaceAll('&emsp;', '\t');
         highlightsVal = test; //temp.substr(0, firstPart) + temp.substr(secondPart);
 
     }
