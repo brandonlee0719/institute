@@ -60,11 +60,15 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "400",
         fontSize: "small",
         whiteSpace: "pre-line",
-        marginTop: "10px"
+        marginTop: "10px",
+        overflow: "auto",
     },
     highlighTitle: {
         color: "black",
         fontSize: "14px"
+    },
+    html: {
+        overflowY: 'scroll',
     }
 
 }));
@@ -253,7 +257,7 @@ export default function Class() {
 
                     {
                         classData.type === 'V' ?
-                            <Grid container spacing={1} style={{ marginTop: "20px", overflow: "auto", height: '31vh' }}>
+                            <Grid container spacing={1} style={{ marginTop: "20px", overflow: "auto" }}>
                                 <Grid item md={12} xs={12} >
                                     <Typography className={classes.highlighTitle}> Highlights</Typography>
                                     <Typography
