@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     "& p": {
       color: "#AEAEAE",
     },
-    //fontSize: "11px !important",
+    fontSize: "11px !important",
   },
 }));
 
@@ -48,21 +48,21 @@ export default function Footer() {
   const { user } = useAuth();
   return (
     <Container component="footer" maxWidth={false} className={classes.footer}>
-      <Box mt={5} className={classes.footerText}>
-        <CustomTypography variant="body1" color="textPrimary" align="center">
-          {"Copyright © "}
-          {" "}
-          {/* {new Date().getFullYear()}
+
+      <CustomTypography variant="body1" color="textPrimary" align="center" className={classes.footerText}>
+        {"Copyright © "}
+        {" "}
+        {/* {new Date().getFullYear()}
            */}
-          {/*"2020"*/}
-          {" Avon Institute"}
-          {/* {` ${process.env.REACT_APP_SITE_TITLE}`}
+        {/*"2020"*/}
+        {" Avon Institute"}
+        {/* {` ${process.env.REACT_APP_SITE_TITLE}`}
           {" "}
           - User
           {" "}
           {`${user.firstname} ${user.lastname}`} */}
-        </CustomTypography>
-      </Box>
+      </CustomTypography>
+
     </Container>
   );
 }
