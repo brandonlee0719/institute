@@ -59,7 +59,8 @@ const useStyles = makeStyles((theme) => ({
         color: "gray",
         fontWeight: "400",
         fontSize: "small",
-        whiteSpace: "pre-line"
+        whiteSpace: "pre-line",
+        marginTop: "10px"
     },
     highlighTitle: {
         color: "black",
@@ -251,12 +252,9 @@ export default function Class() {
 
                     {
                         classData.type === 'V' ?
-                            <Grid container spacing={1} style={{ marginTop: "5px", overflow: "auto", height: '31vh' }}>
+                            <Grid container spacing={1} style={{ marginTop: "20px", overflow: "auto", height: '31vh' }}>
                                 <Grid item md={12} xs={12} >
                                     <Typography className={classes.highlighTitle}> Highlights</Typography>
-                                </Grid>
-                                <Grid item md={12} xs={12} style={{ overflow: "auto" }}>
-
                                     <Typography
                                         className={classes.highlightValue}
 
@@ -264,7 +262,6 @@ export default function Class() {
                                         {highlightsVal}
 
                                     </Typography>
-
                                 </Grid>
                             </Grid>
                             : null
