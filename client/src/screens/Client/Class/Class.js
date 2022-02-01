@@ -164,10 +164,9 @@ export default function Class() {
     let highlightsVal = '';
     if (classData.length !== 0 && classData.highlight !== null) {
         const temp = classData.highlight;
-        const firstPart = temp.indexOf("/*");
-        const secondPart = temp.indexOf("*/") + 2;
 
-        highlightsVal = temp; //temp.substr(0, firstPart) + temp.substr(secondPart);
+        const test = temp.replace('\t', '&emsp;');
+        highlightsVal = test; //temp.substr(0, firstPart) + temp.substr(secondPart);
 
     }
 
@@ -261,7 +260,8 @@ export default function Class() {
                                     <Typography
                                         className={classes.highlightValue}
 
-                                        dangerouslySetInnerHTML={{ __html: `${highlightsVal}` }}>
+                                    >
+                                        {highlightsVal}
 
                                     </Typography>
 
