@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
         color: "gray",
         fontWeight: "400",
         fontSize: "small",
-        whiteSpace: "pre-line",
+        whiteSpace: "pre-line", // will break lines where they break in code
         marginTop: "10px",
         overflow: "auto",
     },
@@ -171,7 +171,7 @@ export default function Class() {
         const temp = classData.highlight;
 
 
-        const test = temp.replaceAll('&emsp;', '\t');
+        const test = temp.replaceAll('\n<!--', '<!--'); // removes the blank lines, david Feb 2 2022
         highlightsVal = test; //temp.substr(0, firstPart) + temp.substr(secondPart);
 
     }
@@ -262,10 +262,7 @@ export default function Class() {
                                     <Typography className={classes.highlighTitle}> Highlights</Typography>
                                     <Typography
                                         className={classes.highlightValue}
-
-                                    >
-                                        {highlightsVal}
-
+                                        dangerouslySetInnerHTML={{ __html: `${highlightsVal}` }}>
                                     </Typography>
                                 </Grid>
                             </Grid>
