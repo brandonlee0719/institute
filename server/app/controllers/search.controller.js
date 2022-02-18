@@ -6,13 +6,20 @@ exports.searchModule = async (req, res) => {
     //const pgClient = await db.getClient();
     //await pgClient.query('BEGIN')
 
-    const { term } = req.body;
+    var { term } = req.body; // const to var David Feb 17 2021
+    term = term.toLowerCase(); // David Feb 17 2021
 
     try {
 
-
-        const searchResponse = await db.query(`SELECT c.id, m.name, c.title FROM class c LEFT JOIN module m on m.id = c.module_id
-        WHERE c.highlight like '%${term}%' AND c.status = 'A' AND m.status = 'A' ORDER BY m.sort, c.sort LIMIT 20`);
+        const searchResponse = await db.query(`/*search page*/ select c.id, m.name, c.title 
+            from class c 
+            left join module m on m.id = c.module_id
+            where (lower(c.highlight) like '%${term}%' or lower(c.title) like '%${term}%')
+            and c.status = 'A' 
+            and m.status = 'A' 
+            order by m.sort, c.sort 
+            limit 40
+            `);
 
         if (!searchResponse.rowCount) {
             errorMessage.message = "No result found";
