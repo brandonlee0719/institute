@@ -39,11 +39,11 @@ const useStyles = makeStyles((theme) => ({
         height: 240,
     },
     certLogo: {
-        paddingTop: "5em"
+        paddingTop: "1em"
     }
 }));
 
-const certificateTxt = `When you have completed most of the classes, and understand the material, you may display your completion 
+const certificateTxt = `When you have completed most of the classes, and understand the material, you may display the completion 
     certificate on your website by using the following code:`;
 
 const certificateLink = `<a href='https://www.avoninstitute.com' target='_blank'><img src='Cert.svg'></a>`;
