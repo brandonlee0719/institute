@@ -106,7 +106,7 @@ export default function Search() {
                             <Grid item md={5} xs={5} >
                                 <TextField
                                     id="search"
-                                    label="search"
+                                    label="Search"
                                     variant="outlined"
                                     fullWidth
                                     name="search"
