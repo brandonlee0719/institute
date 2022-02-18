@@ -113,23 +113,23 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
     };
 
     if (firstName === "") {
-      enqueueSnackbar(`First Name cannot be null`, {
+      enqueueSnackbar(`Firstname is required`, {
         variant: "error",
       });
     } else if (lastName === "") {
-      enqueueSnackbar(`Last Name cannot be null`, {
+      enqueueSnackbar(`Lastname is required`, {
         variant: "error",
       });
     } else if (email === "") {
-      enqueueSnackbar(`Email cannot be null`, {
+      enqueueSnackbar(`Email is required`, {
         variant: "error",
       });
-    } else if (dropDownVal === "") {
-      enqueueSnackbar(`License cannot be null`, {
-        variant: "error",
-      });
+    // } else if (dropDownVal === "") {
+    //  enqueueSnackbar(`License is required`, {
+    //    variant: "error",
+    //  });
     } else if (password === "") {
-      enqueueSnackbar(`Password cannot be null`, {
+      enqueueSnackbar(`Password is required`, {
         variant: "error",
       });
     } else {

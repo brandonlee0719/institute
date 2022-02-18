@@ -98,7 +98,7 @@ const Login = () => {
             variant="h2"
             className={classes.pageTitle}
           >
-            Physician Login
+            Practitioner Login
           </Typography>
           <Error errors={apiErrors} />
 

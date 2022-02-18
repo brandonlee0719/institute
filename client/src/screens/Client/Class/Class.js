@@ -211,6 +211,8 @@ export default function Class() {
                         }
 
                         <Grid item md={3} xs={3} style={{ marginLeft: "20px" }}>
+                        
+                            {/* Commented out because not working, David Feb 18 2022
                             <Grid item md={12} xs={12} >
                                 <FormControlLabel
                                     label="Completed: "
@@ -231,6 +233,7 @@ export default function Class() {
                             <Grid item md={12} xs={12}>
                                 <label style={{ fontSize: "14px", color: "#37474f" }}>Completion Date: {classData.completion_dt === null ? '-' : dateTimeFormat(classData.completion_dt)}</label>
                             </Grid>
+                            */}
 
                             <Grid item md={12} xs={12}>
                                 <Button

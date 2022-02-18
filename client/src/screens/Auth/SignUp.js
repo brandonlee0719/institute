@@ -84,7 +84,7 @@ const SignUp = () => {
           variant="h2"
           className={classes.pageTitle}
         >
-          Physician Sign Up
+          Practitioner Sign Up
         </Typography>
         {success ? (
           <Success user={signedUpUser} />
