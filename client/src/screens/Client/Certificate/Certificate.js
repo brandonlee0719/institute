@@ -43,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const certificateTxt = `When you have completed most of the classes, and understand the material, then you may display your completion certificate on your website by using the following code:`;
+const certificateTxt = `When you have completed most of the classes, and understand the material, you may display your completion 
+    certificate on your website by using the following code:`;
 
-const certificateLink = `<img src="https://avoninstitute.com/images/cert.svg">`;
+const certificateLink = `<a href='https://www.avoninstitute.com' target='_blank'><img src='Cert.svg'></a>`;
 
 
 export default function Certificate() {
