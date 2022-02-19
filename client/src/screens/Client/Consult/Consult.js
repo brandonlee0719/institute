@@ -58,7 +58,7 @@ export default function Certificate() {
             <Grid container >
                 <Grid item md={7} xs={7} className={classes.headerWrap}>
                     <Typography component="h1" variant="h2" color="textPrimary" className={classes.pageTitle}>
-                        Consult
+                        Consultations
                         {" "}
                         {!isEmpty(selectedProvider) && `- ${selectedProvider?.name}`}
                     </Typography>
