@@ -31,7 +31,7 @@ export default function Footer() {
           {"Copyright © "}
           {" "}
           {new Date().getFullYear()}
-          {process.env.REACT_APP_SITE_TITLE}
+          {` ${process.env.REACT_APP_SITE_TITLE}`}
         </CustomTypography>
       </Box>
     </Container>

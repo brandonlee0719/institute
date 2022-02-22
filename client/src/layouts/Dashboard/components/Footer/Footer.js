@@ -17,8 +17,7 @@ const useStyles = makeStyles((theme) => ({
     //paddingBottom: theme.spacing(2),
     // [theme.breakpoints.up("sm")]: {
     //   paddingTop: theme.spacing(1),
-    //   paddingBottom: theme.spacing(1),
-    // },
+    paddingBottom: theme.spacing(1),
     width: `calc(100% - 240px)`,
     marginLeft: "240px",
   },
@@ -50,17 +49,10 @@ export default function Footer() {
     <Container component="footer" maxWidth={false} className={classes.footer}>
 
       <CustomTypography variant="body1" color="textPrimary" align="center" className={classes.footerText}>
-        {"Copyright © "}
-        {" "}
-        {/* {new Date().getFullYear()}
-           */}
-        {/*"2020"*/}
-        {" Avon Institute"}
-        {/* {` ${process.env.REACT_APP_SITE_TITLE}`}
+          {"Copyright © "}
           {" "}
-          - User
-          {" "}
-          {`${user.firstname} ${user.lastname}`} */}
+          {new Date().getFullYear()}
+          {` ${process.env.REACT_APP_SITE_TITLE}`}
       </CustomTypography>
 
     </Container>
