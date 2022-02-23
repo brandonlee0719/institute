@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => createStyles({
     },
     content: {
         padding: "1rem 1.5rem",
+        whiteSpace: "pre-line",
     },
     actionsContainer: {
         padding: "1rem 1.5rem",
