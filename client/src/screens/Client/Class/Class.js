@@ -28,12 +28,12 @@ pdfjs
 const useStyles = makeStyles((theme) => ({
     pageTitle: {
         marginBottom: theme.spacing(2),
-        color: "black",
-        fontSize: "14px"
+        color: "DarkSlateGray",
+        fontSize: "18px"
     },
     root: {
         flexGrow: 1,
-        padding: "40px 0px",
+        padding: "30px 0px",
     },
     formControl: {
         display: "flex",
