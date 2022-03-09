@@ -3,8 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config({ debug: true, override: true });
 
 module.exports = {
-  port: process.env.PORT || 4100,
-  origin: process.env.ORIGIN || `http://localhost:${exports.port}`,
+  port: process.env.PORT,
   dbConfig: {
     host: process.env.HOST,
     user: process.env.DBUSER,
