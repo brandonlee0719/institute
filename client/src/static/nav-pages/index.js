@@ -2,7 +2,6 @@
 import ExitToAppIcon from "@material-ui/icons/ExitToAppOutlined";
 
 
-
 export const client_pages = [
   {
     id: 1,

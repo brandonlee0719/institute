@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   CardContent: {
     padding: 0,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     textAlign: "center",
   },
   paper: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   list: {
     width: "100%",
     maxWidth: 360,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
   },
   listItem: {
     cursor: "pointer",

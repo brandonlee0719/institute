@@ -368,11 +368,11 @@ const MessageSection = (props) => {
               {`${option.firstname} ${option.lastname}`}
             </MenuItem>
           ))
-          : (
-            <MenuItem value="">
-              No Assignee Available
-            </MenuItem>
-          )}
+            : (
+              <MenuItem value="">
+                No Assignee Available
+              </MenuItem>
+            )}
         </TextField>
       </Box>
 

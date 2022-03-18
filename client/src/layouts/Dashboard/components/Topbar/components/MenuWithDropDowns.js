@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
 import { Menu, MenuItem, makeStyles } from "@material-ui/core";
@@ -10,7 +11,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   itemWithSubmenus: {
-    color: '#AEAEAE',
+    color: "#AEAEAE",
     padding: "16px 15px",
     textDecoration: "none",
   },
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "1px solid #E9EBEE",
     paddingTop: "13px !important",
     paddingBottom: "13px !important",
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
   },
 }));
 

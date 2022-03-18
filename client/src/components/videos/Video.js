@@ -6,7 +6,7 @@ import ReactPlayer from "react-player/youtube";
 // https://www.youtube.com/watch?v=ysz5S6PUM-U
 
 const Video = ({ height, width, url }) => (
-  <ReactPlayer controls={true} url={url} height={height} width={width} />
+  <ReactPlayer controls url={url} height={height} width={width} />
 
 );
 

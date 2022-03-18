@@ -26,32 +26,32 @@ export const removeEmpty = (obj) => {
 
 function getFullDate(x) {
   switch (x) {
-    case 0:
-      return 31;
-    case 1:
-      return 28;
-    case 2:
-      return 31;
-    case 3:
-      return 30;
-    case 4:
-      return 31;
-    case 5:
-      return 30;
-    case 6:
-      return 31;
-    case 7:
-      return 31;
-    case 8:
-      return 30;
-    case 9:
-      return 31;
-    case 10:
-      return 30;
-    case 11:
-      return 31;
-    default:
-      return 30;
+  case 0:
+    return 31;
+  case 1:
+    return 28;
+  case 2:
+    return 31;
+  case 3:
+    return 30;
+  case 4:
+    return 31;
+  case 5:
+    return 30;
+  case 6:
+    return 31;
+  case 7:
+    return 31;
+  case 8:
+    return 30;
+  case 9:
+    return 31;
+  case 10:
+    return 30;
+  case 11:
+    return 31;
+  default:
+    return 30;
   }
 }
 
@@ -163,174 +163,174 @@ export const calculateDateDifference = (d1, d2 = presentDate) => {
 
 export const statusToColorCode = (status) => {
   switch (status) {
-    case "D":
-      return "#ffab40";
-    case "A":
-      return "#008B00";
-    default:
-      return "#2196f3";
+  case "D":
+    return "#ffab40";
+  case "A":
+    return "#008B00";
+  default:
+    return "#2196f3";
   }
 };
 
 export const mapAppointmentStatus = (status) => {
   switch (status) {
-    case "R":
-      return "Requested";
-    case "A":
-      return "Approved";
-    case "D":
-      return "Declined";
-    default:
-      return "";
+  case "R":
+    return "Requested";
+  case "A":
+    return "Approved";
+  case "D":
+    return "Declined";
+  default:
+    return "";
   }
 };
 
 export const encounterTypeToLetterConversion = (encounter) => {
   switch (encounter) {
-    case "Office Visit":
-      return "O";
-    case "Email":
-      return "E";
-    case "Admin Note":
-      return "A";
-    case "Phone Call":
-      return "P";
-    case "Refill":
-      return "R";
-    default:
-      return "";
+  case "Office Visit":
+    return "O";
+  case "Email":
+    return "E";
+  case "Admin Note":
+    return "A";
+  case "Phone Call":
+    return "P";
+  case "Refill":
+    return "R";
+  default:
+    return "";
   }
 };
 
 export const encounterLetterToTypeConversion = (encounter) => {
   switch (encounter) {
-    case "O":
-      return "Office Visit";
-    case "E":
-      return "Email";
-    case "A":
-      return "Admin Note";
-    case "P":
-      return "Phone Call";
-    case "R":
-      return "Refill";
-    default:
-      return "";
+  case "O":
+    return "Office Visit";
+  case "E":
+    return "Email";
+  case "A":
+    return "Admin Note";
+  case "P":
+    return "Phone Call";
+  case "R":
+    return "Refill";
+  default:
+    return "";
   }
 };
 
 export const convertTransactionTypes = (type) => {
   switch (type) {
-    case "Service":
-      return 1;
-    case "Service Credit":
-      return 2;
-    case "Payment":
-      return 3;
-    case "Payment Refund":
-      return 4;
-    default:
-      return "";
+  case "Service":
+    return 1;
+  case "Service Credit":
+    return 2;
+  case "Payment":
+    return 3;
+  case "Payment Refund":
+    return 4;
+  default:
+    return "";
   }
 };
 
 export const messageStatusType = (type) => {
   switch (type) {
-    case "O":
-      return "Open";
-    case "C":
-      return "Closed";
-    default:
-      return "";
+  case "O":
+    return "Open";
+  case "C":
+    return "Closed";
+  default:
+    return "";
   }
 };
 
 export const paymentMethodType = (type) => {
   switch (type) {
-    case "V":
-      return "Visa";
-    case "M":
-      return "Master";
-    case "C":
-      return "Credit Card";
-    default:
-      return "New Payment Method"; // required for purchase labs page
+  case "V":
+    return "Visa";
+  case "M":
+    return "Master";
+  case "C":
+    return "Credit Card";
+  default:
+    return "New Payment Method"; // required for purchase labs page
   }
 };
 
 export const labRangeTableTranslation = (type) => {
   switch (type) {
-    case "G":
-      return "Gender";
-    case "A":
-      return "Age";
-    case "M":
-      return "Male";
-    case "F":
-      return "Female";
-    default:
-      return "";
+  case "G":
+    return "Gender";
+  case "A":
+    return "Age";
+  case "M":
+    return "Male";
+  case "F":
+    return "Female";
+  default:
+    return "";
   }
 };
 
 export const labStatusTypeToLabel = (type) => {
   switch (type) {
-    case "R":
-      return "Requested";
-    case "A":
-      return "Approved";
-    case "D":
-      return "Declined";
-    default:
-      return "";
+  case "R":
+    return "Requested";
+  case "A":
+    return "Approved";
+  case "D":
+    return "Declined";
+  default:
+    return "";
   }
 };
 
 export const labSourceTypeToLabel = (type) => {
   switch (type) {
-    case "P":
-      return "Patient";
-    case "U":
-      return "User";
-    case "L":
-      return "Lab Company";
-    case "F":
-      return "Fax";
-    default:
-      return "";
+  case "P":
+    return "Patient";
+  case "U":
+    return "User";
+  case "L":
+    return "Lab Company";
+  case "F":
+    return "Fax";
+  default:
+    return "";
   }
 };
 
 export const drugFrequencyCodeToLabel = (frequency) => {
   switch (frequency) {
-    case "1D":
-      return "Once a day";
-    case "2D":
-      return "Twice a day";
-    default:
-      return "";
+  case "1D":
+    return "Once a day";
+  case "2D":
+    return "Twice a day";
+  default:
+    return "";
   }
 };
 
 export const drugFrequencyLabelToCode = (frequency) => {
   switch (frequency) {
-    case "Once Daily":
-      return "1D";
-    case "Twice Daily":
-      return "2D";
-    default:
-      return "";
+  case "Once Daily":
+    return "1D";
+  case "Twice Daily":
+    return "2D";
+  default:
+    return "";
   }
 };
 
 export const medicationFormToLabel = (form) => {
   switch (form) {
-    case "T":
-      return "Tablets";
-    case "C":
-      return "Capsules";
-    default:
-      return "";
+  case "T":
+    return "Tablets";
+  case "C":
+    return "Capsules";
+  default:
+    return "";
   }
 };
 

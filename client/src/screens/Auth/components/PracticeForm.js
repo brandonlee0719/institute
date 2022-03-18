@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable no-console */
+/* eslint-disable max-len */
 import React, { useState } from "react";
 
-import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
-
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Grid from "@material-ui/core/Grid";
 import {
   Select,
   MenuItem,
@@ -12,21 +12,20 @@ import {
   FormControl,
   makeStyles,
 } from "@material-ui/core";
-
+import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-
 import TextField from "@material-ui/core/TextField";
-
 import Alert from "@material-ui/lab/Alert";
 import _ from "lodash";
 import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
 
 import AuthService from "../../../services/auth.service";
-
-import TextFieldWithError from "./TextFieldWithError";
-
 import CommonModal from "../../Modal";
+import TextFieldWithError from "./TextFieldWithError";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -49,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     marginTop: "5px",
     fontSize: "15px",
-    width: 200
+    width: 200,
   },
   meta: {
     textAlign: "right",
@@ -83,8 +82,8 @@ const options = [
   { value: "PharmD", label: "PharmD" },
   { value: "CNS", label: "CNS" },
   { value: "Other license", label: "Other license" },
-  { value: "No active license", label: "No active license" }
-]
+  { value: "No active license", label: "No active license" },
+];
 const PracticeForm = ({ onFormSubmit, ...props }) => {
   const { errors } = props;
   const classes = useStyles();
@@ -178,21 +177,21 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
     })
       .then(
         (response) => {
-          if (response.data.status === 'success') {
+          if (response.data.status === "success") {
             // Remove errors record with param
             const updatedErrors = fieldErrors.filter(
               (error) => error.param !== response.data.message.param,
             );
             setFieldErrors(updatedErrors);
           } else {
-            console.log("In else part")
+            console.log("In else part");
             const uniqueFieldErrors = _.uniqWith(
               [...fieldErrors, response.data.message],
               _.isEqual,
             );
             setFieldErrors(uniqueFieldErrors);
           }
-        }
+        },
       )
       .catch((err) => {
         console.error("catch err", err);
@@ -208,7 +207,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
   };
 
   const handleModalClose = () => {
-    setModalOpen(false)
+    setModalOpen(false);
   };
 
   const modalTitle = "Terms of Service";
@@ -320,8 +319,8 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         ))}
 
       {
-        modalOpen ?
-          <CommonModal title={modalTitle} body={modalBody} isModalOpen={true} isModalClose={handleModalClose} />
+        modalOpen
+          ? <CommonModal title={modalTitle} body={modalBody} isModalOpen isModalClose={handleModalClose} />
           : null
       }
 
@@ -340,7 +339,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         helperText={`${firstName.length >= 35
           ? "Enter a first name between 35 charecter"
           : ""
-          }`}
+        }`}
       />
       <TextField
         value={lastName}
@@ -354,7 +353,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         onChange={(event) => setLastName(event.target.value)}
         inputProps={{ maxLength: 35 }}
         helperText={`${lastName.length >= 35 ? "Enter a last name between 35 charecter" : ""
-          }`}
+        }`}
       />
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id="demo-simple-select-outlined-label">License</InputLabel>
@@ -363,7 +362,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
           id="demo-simple-select-outlined"
           value={dropDownVal}
           onChange={handleChange}
-          autoWidth={true}
+          autoWidth
           label="License"
         >
           {options.length
@@ -391,7 +390,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         helperText={`${email.length >= 255
           ? "Enter an email between 255 charecter"
           : ""
-          }`}
+        }`}
       />
 
       <TextFieldWithError
@@ -404,7 +403,7 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         errors={getFieldError("users", "password")}
         inputProps={{ maxLength: 90 }}
         helperText={`${password.length >= 90 ? "Enter a password between 90 charecter" : ""
-          }`}
+        }`}
       />
 
       <FormControlLabel
@@ -412,7 +411,9 @@ const PracticeForm = ({ onFormSubmit, ...props }) => {
         label={(
           <div>
             <span>
-              Check here to indicate that you have read and agree to the  <a style={{ color: "#2979ff" }} onClick={handleModalOpen}>
+              Check here to indicate that you have read and agree to the
+              {" "}
+              <a style={{ color: "#2979ff" }} onClick={handleModalOpen}>
                 Terms of Service
               </a>
             </span>

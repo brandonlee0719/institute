@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/core";
@@ -14,13 +16,13 @@ import { isEmpty } from "../../../utils/helpers";
 const useStyles = makeStyles((theme) => ({
   pageTitle: {
     marginBottom: theme.spacing(2),
-    color: "#808080"
+    color: "#808080",
   },
   pageDescription: {
     marginTop: theme.spacing(2),
     color: "#808080",
-    fontWeight: '200',
-    fontSize: 'large'
+    fontWeight: "200",
+    fontSize: "large",
   },
   root: {
     flexGrow: 1,
@@ -46,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export default function Home() {
   const classes = useStyles();
 
@@ -54,7 +55,7 @@ export default function Home() {
 
   return (
     <div className={classes.root}>
-      <Grid container >
+      <Grid container>
         <Grid item md={7} xs={7} className={classes.headerWrap}>
           <Typography component="h1" variant="h3" className={classes.pageTitle}>
             Home
@@ -68,21 +69,21 @@ export default function Home() {
         <Grid item md={9} xs={9}>
 
           <Grid container spacing={2}>
-            <Grid item md={5} xs={5} >
+            <Grid item md={5} xs={5}>
               <ReactPlayer
                 url="https://www.youtube.com/watch?v=AXW_9O9U2sQ"
-                controls={true}
+                controls
               />
             </Grid>
           </Grid>
 
           <Grid container spacing={2}>
             <Grid item md={12} xs={12}>
-              <p className={classes.pageDescription} >Welcome to the Avon Institute functional medicine training program.</p>
-              <p className={classes.pageDescription} >To start learning, click on the menu links on the left.</p>
-              <p className={classes.pageDescription} >To change your email or password, click Account on the upper right.</p>
-              <p className={classes.pageDescription} >To give us feedback on our program, click Contact on the upper right.</p>
-              <p className={classes.pageDescription} >To learn more about AvonEHR software, visit www.AvonEHR.com.</p>
+              <p className={classes.pageDescription}>Welcome to the Avon Institute functional medicine training program.</p>
+              <p className={classes.pageDescription}>To start learning, click on the menu links on the left.</p>
+              <p className={classes.pageDescription}>To change your email or password, click Account on the upper right.</p>
+              <p className={classes.pageDescription}>To give us feedback on our program, click Contact on the upper right.</p>
+              <p className={classes.pageDescription}>To learn more about AvonEHR software, visit www.AvonEHR.com.</p>
             </Grid>
 
           </Grid>

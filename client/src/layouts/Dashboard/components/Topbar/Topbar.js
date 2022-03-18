@@ -1,31 +1,28 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/MenuOutlined";
-
 import clsx from "clsx";
-
 import PropTypes from "prop-types";
 import { Link, NavLink as RouterLink, useHistory } from "react-router-dom";
 
+import Logo from "../../../../assets/img/Logo.svg";
 import useAuth from "../../../../hooks/useAuth";
 import useDebounce from "../../../../hooks/useDebounce";
 import { client_pages } from "../../../../static/nav-pages";
-import Logo from "../../../../assets/img/Logo.svg";
 import * as API from "../../../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     boxShadow: "none",
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
   },
   Logo: {
     maxWidth: "180px",
@@ -67,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#AEAEAE",
     padding: "10px 10px",
     textDecoration: "none",
-    fontWeight: "600"
+    fontWeight: "600",
   },
   patientLink: {
     color: "#AEAEAE",
@@ -209,22 +206,25 @@ const Topbar = (props) => {
 
                     <Button key={page.id}>
                       {
-                        page.title === 'AvonEHR' ?
-
+                        page.title === "AvonEHR" ? (
                           <a
                             target="_blank"
                             className={classes.link}
-                            href="https://www.avonehr.com">
-                            {page.title}
-                          </a>
-                          :
-                          <RouterLink
-                            to={page.href}
-                            className={classes.link}
-                            onClick={page.logout && handleLogout}
+                            href="https://www.avonehr.com"
+                            rel="noreferrer"
                           >
                             {page.title}
-                          </RouterLink>
+                          </a>
+                        )
+                          : (
+                            <RouterLink
+                              to={page.href}
+                              className={classes.link}
+                              onClick={page.logout && handleLogout}
+                            >
+                              {page.title}
+                            </RouterLink>
+                          )
                       }
 
                     </Button>

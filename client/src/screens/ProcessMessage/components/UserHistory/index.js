@@ -51,15 +51,15 @@ const UserHistory = (props) => {
             <StyledTableCellLg>{row.note_assign}</StyledTableCellLg>
           </StyledTableRowLg>
         ))
-        : (
-          <StyledTableRowLg>
-            <StyledTableCellLg colSpan={5}>
-              <Typography align="center" variant="body1">
-                No Records found...
-              </Typography>
-            </StyledTableCellLg>
-          </StyledTableRowLg>
-        )}
+          : (
+            <StyledTableRowLg>
+              <StyledTableCellLg colSpan={5}>
+                <Typography align="center" variant="body1">
+                  No Records found...
+                </Typography>
+              </StyledTableCellLg>
+            </StyledTableRowLg>
+          )}
       </TableBody>
     </Table>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
 import Avatar from "@material-ui/core/Avatar";
@@ -9,10 +10,10 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { useSnackbar } from "notistack";
 
 import Logo from "../../assets/img/Logo.svg";
+import useAuth from "../../hooks/useAuth";
 import AuthService from "../../services/auth.service";
 import PracticeForm from "./components/PracticeForm";
 import Success from "./components/Success";
-import useAuth from "../../hooks/useAuth";
 
 const useStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -53,7 +54,6 @@ const SignUp = () => {
   const handleFormSubmit = (data) => {
     AuthService.register(data).then(
       async (response) => {
-
         if (response.data) {
           const userData = response.data;
           setSignedUpUser(userData);

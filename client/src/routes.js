@@ -15,7 +15,6 @@ import {
 import ClientPortalGuard from "./components/ClientPortalGuard";
 import GuestGuard from "./components/GuestGuard";
 import LoadingScreen from "./components/LoadingScreen";
-
 import DashboardLayout from "./layouts/Dashboard";
 import MainLayout from "./layouts/MainLayout";
 
@@ -129,9 +128,9 @@ const routes = [
   {
     path: "/avonEHR",
     component: () => {
-      window.location.href = 'www.avonehr.com';
+      window.location.href = "www.avonehr.com";
       return null;
-    }
+    },
   },
   {
     path: "*",

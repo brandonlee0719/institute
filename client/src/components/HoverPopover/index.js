@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   popoverContent: {
     pointerEvents: "auto",
     padding: theme.spacing(1.5),
-    fontSize: "small"
+    fontSize: "small",
   },
 }));
 

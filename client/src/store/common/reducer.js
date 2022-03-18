@@ -21,61 +21,61 @@ const initState = {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case START_FETCHING:
-      return {
-        ...state,
-        loading: true,
-        success: false,
-      };
-    case FETCHING_COMPLETED:
-      return {
-        ...state,
-        loading: false,
-        success: true,
-      };
-    case SET_ERROR:
-      return {
-        ...state,
-        error: action.error,
+  case START_FETCHING:
+    return {
+      ...state,
+      loading: true,
+      success: false,
+    };
+  case FETCHING_COMPLETED:
+    return {
+      ...state,
+      loading: false,
+      success: true,
+    };
+  case SET_ERROR:
+    return {
+      ...state,
+      error: action.error,
+      isOpen: true,
+      success: false,
+      snackbar: {
+        ...state.snackbar,
         isOpen: true,
-        success: false,
-        snackbar: {
-          ...state.snackbar,
-          isOpen: true,
-          message: action.error.message,
-          severity: action.error.severity,
-        },
-      };
-    case SET_SUCCESS:
-      return {
-        ...state,
-        error: action.error,
+        message: action.error.message,
+        severity: action.error.severity,
+      },
+    };
+  case SET_SUCCESS:
+    return {
+      ...state,
+      error: action.error,
+      isOpen: true,
+      success: true,
+      snackbar: {
+        ...state.snackbar,
         isOpen: true,
-        success: true,
-        snackbar: {
-          ...state.snackbar,
-          isOpen: true,
-          message: action.message,
-          severity: "success",
-        },
-      };
-    case CLOSE_SNACKBAR:
-      return {
-        ...state,
-        snackbar: {
-          ...state.snackbar,
-          isOpen: false,
-        },
-      };
-
-    case HIDE_ERROR:
-      return {
-        ...state,
+        message: action.message,
+        severity: "success",
+      },
+    };
+  case CLOSE_SNACKBAR:
+    return {
+      ...state,
+      snackbar: {
+        ...state.snackbar,
         isOpen: false,
-      };
+      },
+    };
 
-    default:
-      return state;
+  case HIDE_ERROR:
+    return {
+      ...state,
+      isOpen: false,
+    };
+
+  default:
+    return state;
   }
 };
 

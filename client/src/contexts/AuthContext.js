@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {
   createContext,
   useEffect,
@@ -44,41 +45,41 @@ const setSession = (accessToken) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "INITIALISE": {
-      const { isAuthenticated, user, lastVisitedPatient } = action.payload;
-      return {
-        ...state,
-        isAuthenticated,
-        isInitialised: true,
-        user,
-        lastVisitedPatient,
-      };
-    }
-    case "UPDATE_LAST_VISITED_PATIENT": {
-      const { lastVisitedPatient } = action.payload;
-      return {
-        ...state,
-        lastVisitedPatient,
-      };
-    }
-    case "LOGIN": {
-      const { user } = action.payload;
-      return {
-        ...state,
-        isAuthenticated: true,
-        user,
-      };
-    }
-    case "LOGOUT": {
-      return {
-        ...state,
-        isAuthenticated: false,
-        user: null,
-      };
-    }
-    default: {
-      return { ...state };
-    }
+  case "INITIALISE": {
+    const { isAuthenticated, user, lastVisitedPatient } = action.payload;
+    return {
+      ...state,
+      isAuthenticated,
+      isInitialised: true,
+      user,
+      lastVisitedPatient,
+    };
+  }
+  case "UPDATE_LAST_VISITED_PATIENT": {
+    const { lastVisitedPatient } = action.payload;
+    return {
+      ...state,
+      lastVisitedPatient,
+    };
+  }
+  case "LOGIN": {
+    const { user } = action.payload;
+    return {
+      ...state,
+      isAuthenticated: true,
+      user,
+    };
+  }
+  case "LOGOUT": {
+    return {
+      ...state,
+      isAuthenticated: false,
+      user: null,
+    };
+  }
+  default: {
+    return { ...state };
+  }
   }
 };
 
@@ -126,7 +127,7 @@ export const AuthProvider = ({ children }) => {
           setSession(accessToken);
           const decoded = jwtDecode(accessToken);
 
-          let fetchURL = `${API_BASE}/auth/user/${decoded.id}`;
+          const fetchURL = `${API_BASE}/auth/user/${decoded.id}`;
 
 
           const response = await axios.get(fetchURL, {
@@ -140,7 +141,7 @@ export const AuthProvider = ({ children }) => {
             payload: {
               ...state,
               isAuthenticated: true,
-              user
+              user,
             },
           });
         } else {

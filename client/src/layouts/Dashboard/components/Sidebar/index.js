@@ -1,16 +1,16 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import { Link, NavLink as RouterLink, useHistory } from "react-router-dom";
+
 import { Drawer } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-
 import PropTypes from "prop-types";
-
-import useAuth from "../../../../hooks/useAuth";
-import { client_pages } from "../../../../static/nav-pages";
+import { Link, NavLink as RouterLink, useHistory } from "react-router-dom";
 
 import Ad1 from "../../../../assets/img/ad1.png";
 import Ad2 from "../../../../assets/img/ad2.png";
-import Grid from "@material-ui/core/Grid";
+import useAuth from "../../../../hooks/useAuth";
+import { client_pages } from "../../../../static/nav-pages";
 import AccordionSideBar from "./components/Accordion/Accordion";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 150,
       height: "calc(100% - 64px)",
     },
-    border: "none"
+    border: "none",
   },
   root: {
     backgroundColor: theme.palette.white,
@@ -75,7 +75,7 @@ const Sidebar = (props) => {
         classes={{ paper: classes.sideDrawer }}
         onClose={onClose}
         open
-        variant='persistent'
+        variant="persistent"
       >
         <div className={classes.root}>
           <div container>
@@ -83,7 +83,9 @@ const Sidebar = (props) => {
             <a
               target="_blank"
               className={classes.link}
-              href="https://www.avonehr.com">
+              href="https://www.avonehr.com"
+              rel="noreferrer"
+            >
               <img src={Ad1} alt="Clinos software ad" className={classes.Logo} />
             </a>
 

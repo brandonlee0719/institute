@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
 import Avatar from "@material-ui/core/Avatar";
@@ -95,7 +96,6 @@ const ForgetPassword = () => {
           } else {
             setErrors([]);
           }
-
         }
       },
     );
@@ -151,7 +151,7 @@ const ForgetPassword = () => {
                   helperText={`${email.length >= 255
                     ? "Enter an email between 255 charecter"
                     : ""
-                    }`}
+                  }`}
                 />
                 <Button
                   type="submit"

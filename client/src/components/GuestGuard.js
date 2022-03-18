@@ -10,12 +10,12 @@ const GuestGuard = ({ children }) => {
 
   if (isAuthenticated) {
     switch (user.role) {
-      case "PATIENT":
-        return <Redirect to="/patient" />;
-      case "CORPORATE":
-        return <Redirect to="/corporate" />;
-      default:
-        return <Redirect to="/client/home" />;
+    case "PATIENT":
+      return <Redirect to="/patient" />;
+    case "CORPORATE":
+      return <Redirect to="/corporate" />;
+    default:
+      return <Redirect to="/client/home" />;
     }
   }
 

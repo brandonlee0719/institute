@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 import { Container, Box, Typography } from "@material-ui/core";
@@ -7,14 +8,14 @@ import useAuth from "../../../../hooks/useAuth";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    //flex: 0,
-    backgroundColor: '#ffffff',
+    // flex: 0,
+    backgroundColor: "#ffffff",
     color: "#ffffff",
     clear: "both",
     position: "relative",
-    //marginTop: theme.spacing(1),
-    //paddingTop: theme.spacing(2),
-    //paddingBottom: theme.spacing(2),
+    // marginTop: theme.spacing(1),
+    // paddingTop: theme.spacing(2),
+    // paddingBottom: theme.spacing(2),
     // [theme.breakpoints.up("sm")]: {
     //   paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
@@ -24,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
   footerText: {
     // marginLeft: "240px",
     color: "#AEAEAE",
-    //marginTop: 0,
-    //paddingTop: theme.spacing(1),
+    // marginTop: 0,
+    // paddingTop: theme.spacing(1),
     // paddingBottom: theme.spacing(1),
     "& p": {
       color: "#AEAEAE",
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const CustomTypography = withStyles(() => ({
   root: {
     fontSize: "11px",
-    //lineHeight: "4px",
+    // lineHeight: "4px",
     letterSpacing: ".65px",
   },
 }))(Typography);
@@ -49,10 +50,10 @@ export default function Footer() {
     <Container component="footer" maxWidth={false} className={classes.footer}>
 
       <CustomTypography variant="body1" color="textPrimary" align="center" className={classes.footerText}>
-          {"Copyright © "}
-          {" "}
-          {new Date().getFullYear()}
-          {` ${process.env.REACT_APP_SITE_TITLE}`}
+        {"Copyright © "}
+        {" "}
+        {new Date().getFullYear()}
+        {` ${process.env.REACT_APP_SITE_TITLE}`}
       </CustomTypography>
 
     </Container>
